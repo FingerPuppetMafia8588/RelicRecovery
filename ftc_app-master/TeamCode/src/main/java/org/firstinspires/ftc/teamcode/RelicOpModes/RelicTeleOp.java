@@ -37,10 +37,12 @@ public class RelicTeleOp extends RelicHardware {
 
 
 
+            //creates tank drive control scheme
             float left = -gamepad1.left_stick_y;
             float right = -gamepad1.right_stick_y;
 
 
+            //resets variables
             RightFrontPowerVar = 0;
             RightBackPowerVar = 0;
             LeftFrontPowerVar = 0;
@@ -78,6 +80,8 @@ public class RelicTeleOp extends RelicHardware {
             //Show the Motor Values
             telemetry.addData("Front Motors", "left (%.2f), right (%.2f)", LeftFrontPowerVar, RightFrontPowerVar);
             telemetry.addData("Back Motors", "left (%.2f), right (%.2f)", LeftBackPowerVar, RightBackPowerVar);
+
+            telemetry.update();
 
 
 

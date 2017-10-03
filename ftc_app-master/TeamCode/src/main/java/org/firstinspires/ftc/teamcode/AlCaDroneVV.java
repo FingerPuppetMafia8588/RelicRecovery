@@ -11,20 +11,27 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 @TeleOp (name = "AlCaDrone", group = "Example")
 public class AlCaDroneVV  extends OpMode {
 
+    //declares the drive motors
     DcMotor Right;
     DcMotor Left;
+
+    //declares the utility motors
     DcMotor flipper;
     DcMotor collector;
     DcMotor conveyor;
 
+    //this code runs once after init is pressed
     @Override
     public void init() {
+
+        //grabs the motor names from the configuration file.
         Right = hardwareMap.dcMotor.get("rightMotor");
         Left = hardwareMap.dcMotor.get("leftMotor");
         flipper = hardwareMap.dcMotor.get("flipper");
         collector = hardwareMap.dcMotor.get("collector");
         conveyor = hardwareMap.dcMotor.get("convey");
 
+        //reverses the left motor due to having andymark motors with a gear reduction
         Right.setDirection(DcMotor.Direction.FORWARD);
         Left.setDirection(DcMotor.Direction.REVERSE);
         flipper.setDirection(DcMotor.Direction.REVERSE);
@@ -32,11 +39,17 @@ public class AlCaDroneVV  extends OpMode {
         conveyor.setDirection(DcMotor.Direction.FORWARD);
     }
 
+    //this code runs continually after start is pressed
     @Override
     public void loop() {
+
+        //sets up a basic tank drive control scheme
         Left.setPower(-gamepad1.left_stick_y);
         Right.setPower(-gamepad1.right_stick_y);
 
+        //creates a control for the collector with the dpad on gamepad 2
+
+        //up on dpad brings balls in, down spits out
         if (gamepad2.dpad_up) {
             collector.setPower(1);
         } else if (gamepad2.dpad_down) {
@@ -45,9 +58,11 @@ public class AlCaDroneVV  extends OpMode {
             collector.setPower(0);
         }
 
+        //activates the flipper when pressing y on gamepad 1
         if(gamepad1.y){flipper.setPower(0.5);}
         else {flipper.setPower(0);}
 
+        //makes conveyor correspond to bumpers.
         if(gamepad2.right_bumper){
             conveyor.setPower(1);
         } else if(gamepad2.left_bumper) {

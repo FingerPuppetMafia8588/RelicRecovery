@@ -11,32 +11,44 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 @TeleOp (name = "tilerunner", group = "Example")
 public class TileRunner extends OpMode {
+
+    //declares motors
     DcMotor frontright;
     DcMotor frontleft;
     DcMotor backright;
     DcMotor backleft;
 
+    //this code will run once after init is pressed
     @Override
     public void init () {
+
+        //grab motor names from the configuration file
         frontright = hardwareMap.dcMotor.get("rf");
         frontleft = hardwareMap.dcMotor.get("lf");
         backright = hardwareMap.dcMotor.get("rb");
         backleft = hardwareMap.dcMotor.get("lb");
 
+        //reverse the right motors due to using AndyMark motors on direct drive
         frontright.setDirection(DcMotor.Direction.REVERSE);
         backright.setDirection(DcMotor.Direction.REVERSE);
 
+        //set the motors to run closed loop PID
         frontright.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         frontleft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backright.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         backleft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
+    //this code will run continually after start is pressed
     @Override
     public void loop () {
+
+        //sets drives the bot with a basic tank drive control scheme
+
+        //left joystick corresponds to left motors
+        //right joystick corresponds to right motors
         frontright.setPower(-gamepad1.right_stick_y);
         backright.setPower(-gamepad1.right_stick_y);
-
         frontleft.setPower(-gamepad1.left_stick_y);
         backleft.setPower(-gamepad1.left_stick_y);
     }

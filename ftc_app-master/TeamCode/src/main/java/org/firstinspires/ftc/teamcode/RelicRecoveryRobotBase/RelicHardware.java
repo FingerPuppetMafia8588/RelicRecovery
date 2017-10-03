@@ -107,9 +107,11 @@ public abstract class RelicHardware extends RelicRobot {
             gyro.initialize(parameters);
         }
 
+        //creates variable to be used later
         angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
     }
 
+    // method to simplify setting drive power for the robot drive motors
     public void SetDrivePower (double RightFrontPower, double RightBackPower, double LeftFrontPower, double LeftBackPower) {
         RightFront.setPower(RightFrontPower);
         RightBack.setPower(RightBackPower);
@@ -117,6 +119,7 @@ public abstract class RelicHardware extends RelicRobot {
         LeftBack.setPower(LeftBackPower);
     }
 
+    //method to easily stop the robot
     public void Stop() {
         SetDrivePower(0, 0, 0, 0);
     }

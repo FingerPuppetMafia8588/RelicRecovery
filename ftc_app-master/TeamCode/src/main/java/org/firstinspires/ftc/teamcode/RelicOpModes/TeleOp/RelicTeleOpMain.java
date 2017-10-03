@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.RelicOpModes;
+package org.firstinspires.ftc.teamcode.RelicOpModes.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  */
 
 @TeleOp (name = "Comp TeleOp", group = "RelicRecovery")
-public class RelicTeleOp extends RelicHardware {
+public class RelicTeleOpMain extends RelicHardware {
 
     @Override
     public void runOpMode() throws InterruptedException{

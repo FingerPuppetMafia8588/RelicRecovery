@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.RelicOpModes;
+package org.firstinspires.ftc.teamcode.RelicOpModes.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  */
 
 @Autonomous (name = "Full Front Blue", group = "BlueAuto")
-public class BlueFrontFull extends RelicAutonomousBase {
+public class BlueFrontFullAuto extends RelicAutonomousBase {
     @Override
     public void runOpMode () throws InterruptedException {
         initRobot(RobotRunType.AUTONOMOUS);

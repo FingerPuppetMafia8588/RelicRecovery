@@ -32,6 +32,8 @@ public class RelicTeleOpAlt extends RelicHardware {
         float RightFrontPowerVar, RightBackPowerVar, LeftFrontPowerVar, LeftBackPowerVar;
 
         while (opModeIsActive()){
+
+            //adds variables for the joystick variables to be used later
             float x1 = gamepad1.right_stick_x, y1 = -gamepad1.right_stick_y;
             float x2 = gamepad1.left_stick_x;
 
@@ -59,7 +61,7 @@ public class RelicTeleOpAlt extends RelicHardware {
             RightFrontPowerVar -= x2;
             RightBackPowerVar -= x2;
 
-            // Scale movement
+            // Scale the movement variables so they no not exceed the range of -1 to 1
             double max = Math.max(Math.abs(LeftFrontPowerVar), Math.max(Math.abs(LeftBackPowerVar),
                     Math.max(Math.abs(RightFrontPowerVar), Math.abs(RightBackPowerVar))));
             if (max > 1) {
@@ -71,13 +73,16 @@ public class RelicTeleOpAlt extends RelicHardware {
 
             SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);
 
+            //Update Telemetry
 
+            //Show the elapsed game time
+            telemetry.addData("Status", "Run Time: " + runtime.toString());
 
+            //Show the Motor Values
+            telemetry.addData("Front Motors", "left (%.2f), right (%.2f)", LeftFrontPowerVar, RightFrontPowerVar);
+            telemetry.addData("Back Motors", "left (%.2f), right (%.2f)", LeftBackPowerVar, RightBackPowerVar);
 
-
-
-
-
+            telemetry.update();
         }
     }
 }

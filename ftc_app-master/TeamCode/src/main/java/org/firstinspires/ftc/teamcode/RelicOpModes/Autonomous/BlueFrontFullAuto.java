@@ -38,7 +38,7 @@ public class BlueFrontFullAuto extends RelicAutonomousBase {
         // all code after this will occur after the start button is pressed
         waitForStart();
         while (!gyro.isGyroCalibrated()) {
-            //wait if gyro is not calibrated
+            //wait to continue code if gyro is not calibrated
         }
 
         //prepare vuforia

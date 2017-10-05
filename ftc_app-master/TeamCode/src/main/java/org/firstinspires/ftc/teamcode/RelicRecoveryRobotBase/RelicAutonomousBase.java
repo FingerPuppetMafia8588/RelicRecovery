@@ -34,7 +34,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Drive(power);
 
         //convert to encoder ticks
-        inches = inches*7;
+        inches = inches*28/12.566;
 
         boolean hasCorrected = false;
 

@@ -50,23 +50,23 @@ public class AlCaDroneVV  extends OpMode {
         //creates a control for the collector with the dpad on gamepad 2
 
         //up on dpad brings balls in, down spits out
-        if (gamepad2.dpad_up) {
+        if (gamepad1.right_bumper) {
             collector.setPower(1);
-        } else if (gamepad2.dpad_down) {
+        } else if (gamepad1.dpad_down) {
             collector.setPower(-1);
         } else {
             collector.setPower(0);
         }
 
         //activates the flipper when pressing y on gamepad 1
-        if(gamepad1.y){flipper.setPower(0.5);}
+        if(gamepad1.y){flipper.setPower(1);}
         else {flipper.setPower(0);}
 
         //makes conveyor correspond to bumpers.
-        if(gamepad2.right_bumper){
-            conveyor.setPower(1);
-        } else if(gamepad2.left_bumper) {
+        if(gamepad1.left_bumper){
             conveyor.setPower(-1);
+        } else if(gamepad1.b) {
+            conveyor.setPower(1);
         }else {conveyor.setPower(0);
         }
     }

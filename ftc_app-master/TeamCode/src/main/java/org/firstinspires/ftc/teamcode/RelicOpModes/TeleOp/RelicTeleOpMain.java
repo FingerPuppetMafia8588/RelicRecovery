@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by FTC on 10/2/2017.
  */
 
-@TeleOp (name = "Comp TeleOp", group = "RelicRecovery")
+@TeleOp (name = "Comp Simple", group = "RelicRecovery")
 public class RelicTeleOpMain extends RelicHardware {
 
     @Override

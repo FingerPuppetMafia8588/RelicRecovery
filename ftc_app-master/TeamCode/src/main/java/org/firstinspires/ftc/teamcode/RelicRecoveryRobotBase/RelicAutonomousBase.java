@@ -34,7 +34,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Drive(power);
 
         //convert to encoder ticks
-        inches = inches*28/12.566;
+        inches = inches*1120/12.566;
 
         boolean hasCorrected = false;
 
@@ -73,7 +73,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Strafe(power);
 
         //convert to encoder ticks per rotation
-        rotations = rotations*28;
+        rotations = rotations*1120;
 
         //wait until the target is reached
         while (opModeIsActive() && getLeftAbsolute() <= rotations && getRightAbsolute() <= rotations) {

@@ -98,7 +98,6 @@ public abstract class RelicHardware extends RelicRobot {
         parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
         parameters.loggingEnabled      = true;
         parameters.loggingTag          = "gyro";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
 
         //calls for the imu name from Robot Controller
         gyro = hardwareMap.get(BNO055IMU.class, "gyro");

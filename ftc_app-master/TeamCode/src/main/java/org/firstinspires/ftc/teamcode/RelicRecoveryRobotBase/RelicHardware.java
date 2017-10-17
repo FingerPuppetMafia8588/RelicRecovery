@@ -83,8 +83,8 @@ public abstract class RelicHardware extends RelicRobot {
         RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
         LeftColor = hardwareMap.get(ColorSensor.class, "ColorL");
 
-        RightDistance = hardwareMap.get(DistanceSensor.class, "DistanceR");
-        LeftDistance = hardwareMap.get(DistanceSensor.class, "DistanceL");
+        RightDistance = hardwareMap.get(DistanceSensor.class, "ColorR");
+        LeftDistance = hardwareMap.get(DistanceSensor.class, "ColorL");
 
 
 

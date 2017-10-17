@@ -134,9 +134,11 @@ public abstract class RelicAutonomousBase extends RelicHardware {
             return JewelColor.RED;
         } else if (RightColor.blue() > RightColor.red()) {
             return JewelColor.BLUE;
+        } else {
+            return null;
         }
 
-        return null;
+
     }
 
     // gets the color of the jewels from the left Color sensor
@@ -145,9 +147,9 @@ public abstract class RelicAutonomousBase extends RelicHardware {
             return JewelColor.RED;
         } else if (LeftColor.blue() > LeftColor.red()){
             return JewelColor.BLUE;
+        } else {
+            return null;
         }
-
-        return null;
     }
 
     //gets the absolute value of the right encoder value

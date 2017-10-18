@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  */
 
 @Autonomous (name = "Full Front Blue", group = "BlueAuto")
-public class BlueFrontFullAuto extends RelicAutonomousBase {
+public class VuMarkTest extends RelicAutonomousBase {
     @Override
     public void runOpMode () throws InterruptedException {
         initRobot(RobotRunType.AUTONOMOUS);
@@ -63,6 +63,16 @@ public class BlueFrontFullAuto extends RelicAutonomousBase {
             } else {
                 key = CryptoKey.UNKNOWN;
             }
+        }
+
+        if (key == CryptoKey.RIGHT) {
+            Strafe(.5, 5);
+            Drive(1, 10);
+        } else if (key == CryptoKey.MIDDLE) {
+            Drive(1, 10);
+        } else {
+            Strafe(.5, -5);
+            Drive(1, 10);
         }
 
 

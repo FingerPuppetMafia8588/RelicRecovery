@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by FTC on 10/2/2017.
  */
 
-@Autonomous (name = "Full Front Blue", group = "BlueAuto")
+@Autonomous (name = "VuMarks", group = "Tests")
 public class VuMarkTest extends RelicAutonomousBase {
     @Override
     public void runOpMode () throws InterruptedException {

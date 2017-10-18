@@ -142,6 +142,8 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
     }
 
+
+
     // gets the color of the jewels from the left Color sensor
     public JewelColor getJewelColorLeft () {
         if(LeftColor.red() > LeftColor.blue()) {

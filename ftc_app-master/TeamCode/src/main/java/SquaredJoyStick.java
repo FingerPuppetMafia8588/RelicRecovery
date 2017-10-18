@@ -33,6 +33,18 @@ public class SquaredJoyStick extends OpMode {
          } else {
              right = 0;
          }
+
+        if (gamepad1.left_stick_y > 1 ) {
+            left = -Math.pow(gamepad1.left_stick_y, 2);
+        } else if (gamepad1.left_stick_y < 1) {
+            left = Math.pow(gamepad1.left_stick_y, 2);
+        } else {
+            left = 0;
+        }
+
+        RightMotor.setPower(right);
+        LeftMotor.setPower(left);
+
     }
  }
 

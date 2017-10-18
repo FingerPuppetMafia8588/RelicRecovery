@@ -53,6 +53,7 @@ public class VuMarkTest extends RelicAutonomousBase {
             VuMark = RelicRecoveryVuMark.from(relicTemplate);
         }
 
+        //store the results in the key enum
         while( key == CryptoKey.UNKNOWN) {
             if (VuMark == RelicRecoveryVuMark.RIGHT) {
                 key = CryptoKey.RIGHT;

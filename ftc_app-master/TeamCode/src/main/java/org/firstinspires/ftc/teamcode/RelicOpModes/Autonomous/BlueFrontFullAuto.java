@@ -8,6 +8,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
 import org.firstinspires.ftc.teamcode.RelicRecoveryRobotBase.RelicAutonomousBase;
+import org.firstinspires.ftc.teamcode.enums.CryptoKey;
 import org.firstinspires.ftc.teamcode.enums.RobotRunType;
 
 /**
@@ -45,9 +46,27 @@ public class BlueFrontFullAuto extends RelicAutonomousBase {
         relicTrackables.activate();
         RelicRecoveryVuMark VuMark = RelicRecoveryVuMark.from(relicTemplate);
 
+        CryptoKey key = CryptoKey.UNKNOWN;
+
         //wait for a vumark to be identified
         while(VuMark == RelicRecoveryVuMark.UNKNOWN) {
             VuMark = RelicRecoveryVuMark.from(relicTemplate);
         }
+
+        while( key == CryptoKey.UNKNOWN) {
+            if (VuMark == RelicRecoveryVuMark.RIGHT) {
+                key = CryptoKey.RIGHT;
+            } else if (VuMark == RelicRecoveryVuMark.CENTER) {
+                key = CryptoKey.MIDDLE;
+            } else if (VuMark == RelicRecoveryVuMark.LEFT) {
+                key = CryptoKey.LEFT;
+            } else {
+                key = CryptoKey.UNKNOWN;
+            }
+        }
+
+
+
+
     }
 }

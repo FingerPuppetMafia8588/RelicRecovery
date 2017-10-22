@@ -32,8 +32,8 @@ public abstract class RelicHardware extends RelicRobot {
     protected DcMotor RelicArmExt;
 
     //declares servos for jewel arms
-    protected Servo JewelRight;
-    protected Servo JewelLeft;
+    //protected Servo JewelRight;
+    //protected Servo JewelLeft;
 
     //declares servos for hugger
     protected Servo HuggerRight;
@@ -44,10 +44,10 @@ public abstract class RelicHardware extends RelicRobot {
     protected Orientation angles;
 
     //declares the two rev color/distance sensors
-    protected ColorSensor RightColor;
-    protected DistanceSensor RightDistance;
-    protected ColorSensor LeftColor;
-    protected DistanceSensor LeftDistance;
+   // protected ColorSensor RightColor;
+  //  protected DistanceSensor RightDistance;
+  //  protected ColorSensor LeftColor;
+  //  protected DistanceSensor LeftDistance;
 
     //start Vuforia
     protected OpenGLMatrix lastLocation = null;
@@ -73,18 +73,18 @@ public abstract class RelicHardware extends RelicRobot {
         RelicArmExt = hardwareMap.dcMotor.get("extension");
 
         //calls for servo names from Robot Controller
-        JewelRight = hardwareMap.servo.get("jewelR");
-        JewelLeft = hardwareMap.servo.get("jewelL");
+        //JewelRight = hardwareMap.servo.get("jewelR");
+        //JewelLeft = hardwareMap.servo.get("jewelL");
 
         HuggerRight = hardwareMap.servo.get("huggerR");
         HuggerLeft = hardwareMap.servo.get("huggerL");
 
         // calls for names from Robot Controller for color/distance sensors.
-        RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
-        LeftColor = hardwareMap.get(ColorSensor.class, "ColorL");
+        //RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
+        //LeftColor = hardwareMap.get(ColorSensor.class, "ColorL");
 
-        RightDistance = hardwareMap.get(DistanceSensor.class, "DistanceR");
-        LeftDistance = hardwareMap.get(DistanceSensor.class, "DistanceL");
+       // RightDistance = hardwareMap.get(DistanceSensor.class, "DistanceR");
+       // LeftDistance = hardwareMap.get(DistanceSensor.class, "DistanceL");
 
 
 

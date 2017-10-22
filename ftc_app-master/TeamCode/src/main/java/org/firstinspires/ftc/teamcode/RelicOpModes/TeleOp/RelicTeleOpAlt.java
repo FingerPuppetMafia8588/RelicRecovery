@@ -22,6 +22,10 @@ public class RelicTeleOpAlt extends RelicHardware {
         //creates time elapsed variable for usage in telemetry
         ElapsedTime runtime = new ElapsedTime();
 
+        //sets open hugger postions
+        HuggerRight.setPosition(1);
+        HuggerLeft.setPosition(0);
+
         //all code after this line will not occur until the start button is pressed
         waitForStart();
 
@@ -72,6 +76,25 @@ public class RelicTeleOpAlt extends RelicHardware {
             }
 
             SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);
+
+            //if right bumper is pressed then grab
+            if(gamepad1.right_bumper) {
+                HuggerRight.setPosition(0.75);
+                HuggerLeft.setPosition(0.25);
+            }
+
+            if (gamepad1.left_bumper) {
+                HuggerRight.setPosition(1);
+                HuggerLeft.setPosition(0);
+            }
+
+            if (gamepad1.dpad_up) {
+                GlyphArm.setPower(1);
+            } else if (gamepad1.dpad_down) {
+                GlyphArm.setPower(-1);
+            } else {
+                GlyphArm.setPower(0);
+            }
 
             //Update Telemetry
 

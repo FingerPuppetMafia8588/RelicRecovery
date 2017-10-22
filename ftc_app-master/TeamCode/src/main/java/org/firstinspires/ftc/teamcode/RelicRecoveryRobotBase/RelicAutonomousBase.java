@@ -129,26 +129,26 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     //////////////////////////////////////////////////////////////////////////////////////
 
     // gets the color of the jewels from the right color sensor
-    public JewelColor getJewelColorRight() {
-        if(RightColor.red() > RightColor.blue()){
-            return JewelColor.RED;
-        } else if (RightColor.blue() > RightColor.red()) {
-            return JewelColor.BLUE;
-        }
+    //public JewelColor getJewelColorRight() {
+     //   if(RightColor.red() > RightColor.blue()){
+       //     return JewelColor.RED;
+       // } else if (RightColor.blue() > RightColor.red()) {
+      //      return JewelColor.BLUE;
+      //  }
 
-        return null;
-    }
+      //  return null;
+   // }
 
     // gets the color of the jewels from the left Color sensor
-    public JewelColor getJewelColorLeft () {
-        if(LeftColor.red() > LeftColor.blue()) {
-            return JewelColor.RED;
-        } else if (LeftColor.blue() > LeftColor.red()){
-            return JewelColor.BLUE;
-        }
+    //public JewelColor getJewelColorLeft () {
+      //  if(LeftColor.red() > LeftColor.blue()) {
+        //    return JewelColor.RED;
+      //  } else if (LeftColor.blue() > LeftColor.red()){
+      //      return JewelColor.BLUE;
+        //}
 
-        return null;
-    }
+       // return null;
+   // }
 
     //gets the absolute value of the right encoder value
     public int getRightAbsolute() {
@@ -197,26 +197,26 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     ////////////////////////////////////////////////////////////////////////////////////////
 
     //gives telemetry data on the right color sensor
-    public void printRightColorTelemetry() {
-        double r = RightColor.red();
-        double g = RightColor.green();
-        double b = RightColor.blue();
-        String rgb = "" + r + ", " + g + ", " + b;
+    //public void printRightColorTelemetry() {
+       // double r = RightColor.red();
+       // double g = RightColor.green();
+       // double b = RightColor.blue();
+       // String rgb = "" + r + ", " + g + ", " + b;
 
-        telemetry.addData("RGB",rgb);
-        telemetry.update();
-    }
+       // telemetry.addData("RGB",rgb);
+       // telemetry.update();
+  //  }
 
     //gives telemetry data on the left color sensor
-    public void printLeftColorTelemetry() {
-        double r = LeftColor.red();
-        double g = LeftColor.green();
-        double b = LeftColor.blue();
-        String rgb = "" + r + ", " + g + ", " + b;
+    //public void printLeftColorTelemetry() {
+       // double r = LeftColor.red();
+      //  double g = LeftColor.green();
+      //  double b = LeftColor.blue();
+      //  String rgb = "" + r + ", " + g + ", " + b;
 
-        telemetry.addData("RGB", rgb);
-        telemetry.update();
-    }
+      //  telemetry.addData("RGB", rgb);
+      //  telemetry.update();
+   // }
 
     // gives telemetry data on the current heading of the bot
     public void printGyroHeading () {

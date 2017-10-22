@@ -5,5 +5,5 @@ package org.firstinspires.ftc.teamcode.enums;
  */
 
 public enum CryptoKey {
-    LEFT, MIDDLE, RIGHT
+    LEFT, MIDDLE, RIGHT, UNKNOWN
 }

@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.teamcode.enums.CryptoKey;
 import org.firstinspires.ftc.teamcode.enums.DirectionTurn;
 import org.firstinspires.ftc.teamcode.enums.JewelColor;
@@ -86,34 +88,31 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     }
 
     // turns the robot to a certain gyro heading with a set power.
-    public void TurnToHeading(double power, double target, boolean centerTurn) {
+    public void TurnDegrees(double power, int target) {
 
-        LeftFront.setPower(power);
-        LeftBack.setPower(power);
-        if (centerTurn) {
-            RightFront.setPower(-power);
-            RightBack.setPower(-power);
-        }
+        imu.resetZAxisIntegrator();
+        zValue = imu.getIntegratedZValue();
 
-        DirectionTurn direction;
-        if (power < 0) {
-            direction = DirectionTurn.LEFT;
-        } else {
-            direction = DirectionTurn.RIGHT;
-        }
+        while (Math.abs( zValue - target) > 3 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
 
-        if (direction == DirectionTurn.LEFT) {
-            while (opModeIsActive() && angles.thirdAngle < target) {
-                printGyroHeading();
+
+
+            if (zValue > target) {  //if gyro is positive, we will turn right
+                LeftFront.setPower(power);
+                RightFront.setPower(-power);
+                LeftBack.setPower(power);
+                RightBack.setPower(-power);
             }
-            Stop();
-        } else {
-            while (opModeIsActive() && angles.thirdAngle > target) {
-                printGyroHeading();
+            if (zValue < target) {
+                LeftFront.setPower(-power);
+                RightFront.setPower(power);
+                LeftBack.setPower(-power);
+                RightBack.setPower(power);
             }
-            Stop();
-        }
 
+            zValue = imu.getIntegratedZValue();
+        }
+        stop();
     }
 
     protected void Wait(double seconds) {
@@ -130,7 +129,6 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     //////////////////////////////////////////////////////////////////////////////////////
 
     // gets the color of the jewels from the right color sensor
-<<<<<<< HEAD
     //public JewelColor getJewelColorRight() {
      //   if(RightColor.red() > RightColor.blue()){
        //     return JewelColor.RED;
@@ -140,24 +138,11 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
       //  return null;
    // }
-=======
-    public JewelColor getJewelColorRight() {
-        if(RightColor.red() > RightColor.blue()){
-            return JewelColor.RED;
-        } else if (RightColor.blue() > RightColor.red()) {
-            return JewelColor.BLUE;
-        } else {
-            return null;
-        }
 
-
-    }
->>>>>>> 718b93aa4e5a4dc43d82831d7cea0abf10c0d79c
 
 
 
     // gets the color of the jewels from the left Color sensor
-<<<<<<< HEAD
     //public JewelColor getJewelColorLeft () {
       //  if(LeftColor.red() > LeftColor.blue()) {
         //    return JewelColor.RED;
@@ -167,17 +152,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
        // return null;
    // }
-=======
-    public JewelColor getJewelColorLeft () {
-        if(LeftColor.red() > LeftColor.blue()) {
-            return JewelColor.RED;
-        } else if (LeftColor.blue() > LeftColor.red()){
-            return JewelColor.BLUE;
-        } else {
-            return null;
-        }
-    }
->>>>>>> 718b93aa4e5a4dc43d82831d7cea0abf10c0d79c
+
 
     //gets the absolute value of the right encoder value
     public int getRightAbsolute() {
@@ -249,8 +224,8 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
     // gives telemetry data on the current heading of the bot
     public void printGyroHeading () {
-        telemetry.addData("heading", angles.thirdAngle);
-        telemetry.update();
+
+       telemetry.addData("heading", imu.getIntegratedZValue());
     }
 
 
@@ -258,11 +233,5 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     ///////////////////////////////Formatting///////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
 
-    String formatAngle(AngleUnit angleUnit, double angle) {
-        return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
-    }
 
-    String formatDegrees(double degrees){
-        return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
-    }
 }

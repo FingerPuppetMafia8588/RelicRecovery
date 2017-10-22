@@ -38,7 +38,7 @@ public class VuMarkTest extends RelicAutonomousBase {
 
         // all code after this will occur after the start button is pressed
         waitForStart();
-        while (!gyro.isGyroCalibrated()) {
+        while (imu.isCalibrating()) {
             //wait to continue code if gyro is not calibrated
         }
 

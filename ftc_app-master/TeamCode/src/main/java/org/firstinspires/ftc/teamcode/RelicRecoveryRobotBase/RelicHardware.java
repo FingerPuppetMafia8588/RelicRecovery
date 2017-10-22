@@ -2,10 +2,13 @@ package org.firstinspires.ftc.teamcode.RelicRecoveryRobotBase;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
+import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.util.ReadWriteFile;
 
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
@@ -13,7 +16,10 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
+import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
 import org.firstinspires.ftc.teamcode.enums.RobotRunType;
+
+import java.io.File;
 
 /**
  * Created by FTC on 10/2/2017.
@@ -40,8 +46,12 @@ public abstract class RelicHardware extends RelicRobot {
     public Servo HuggerLeft;
 
     //declares variables for gyro
-    protected BNO055IMU gyro;
-    protected Orientation angles;
+    public IntegratingGyroscope gyro;
+    public ModernRoboticsI2cGyro imu;
+
+    int zValue;  //Total rotation left/right
+    int target = 0;  //Desired angle to turn to
+
 
     //declares the two rev color/distance sensors
    // protected ColorSensor RightColor;
@@ -83,13 +93,10 @@ public abstract class RelicHardware extends RelicRobot {
         //RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
         //LeftColor = hardwareMap.get(ColorSensor.class, "ColorL");
 
-<<<<<<< HEAD
+
        // RightDistance = hardwareMap.get(DistanceSensor.class, "DistanceR");
        // LeftDistance = hardwareMap.get(DistanceSensor.class, "DistanceL");
-=======
-        RightDistance = hardwareMap.get(DistanceSensor.class, "ColorR");
-        LeftDistance = hardwareMap.get(DistanceSensor.class, "ColorL");
->>>>>>> 718b93aa4e5a4dc43d82831d7cea0abf10c0d79c
+
 
 
 
@@ -98,21 +105,21 @@ public abstract class RelicHardware extends RelicRobot {
 
 
         // sets up parameters for integrated imu
-        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
-        parameters.angleUnit           = BNO055IMU.AngleUnit.DEGREES;
-        parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
-        parameters.loggingEnabled      = true;
-        parameters.loggingTag          = "gyro";
+        boolean lastResetState = false;
+        boolean curResetState  = false;
 
-        //calls for the imu name from Robot Controller
-        gyro = hardwareMap.get(BNO055IMU.class, "gyro");
+        imu = hardwareMap.get(ModernRoboticsI2cGyro.class, "gyro");
+        gyro = (IntegratingGyroscope)imu;
+
+
+
 
         if(robotRunType == RobotRunType.AUTONOMOUS){
-            gyro.initialize(parameters);
+            imu.calibrate();
+
         }
 
-        //creates variable to be used later
-        angles = gyro.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+
     }
 
     // method to simplify setting drive power for the robot drive motors

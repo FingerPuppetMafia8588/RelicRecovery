@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.teamcode.enums.CryptoKey;
 import org.firstinspires.ftc.teamcode.enums.DirectionTurn;
 import org.firstinspires.ftc.teamcode.enums.JewelColor;
 
@@ -34,7 +35,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Drive(power);
 
         //convert to encoder ticks
-        inches = inches*28/12.566;
+        inches = inches*1120/12.566;
 
         boolean hasCorrected = false;
 
@@ -73,7 +74,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Strafe(power);
 
         //convert to encoder ticks per rotation
-        rotations = rotations*28;
+        rotations = rotations*1120;
 
         //wait until the target is reached
         while (opModeIsActive() && getLeftAbsolute() <= rotations && getRightAbsolute() <= rotations) {
@@ -129,6 +130,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     //////////////////////////////////////////////////////////////////////////////////////
 
     // gets the color of the jewels from the right color sensor
+<<<<<<< HEAD
     //public JewelColor getJewelColorRight() {
      //   if(RightColor.red() > RightColor.blue()){
        //     return JewelColor.RED;
@@ -138,8 +140,24 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
       //  return null;
    // }
+=======
+    public JewelColor getJewelColorRight() {
+        if(RightColor.red() > RightColor.blue()){
+            return JewelColor.RED;
+        } else if (RightColor.blue() > RightColor.red()) {
+            return JewelColor.BLUE;
+        } else {
+            return null;
+        }
+
+
+    }
+>>>>>>> 718b93aa4e5a4dc43d82831d7cea0abf10c0d79c
+
+
 
     // gets the color of the jewels from the left Color sensor
+<<<<<<< HEAD
     //public JewelColor getJewelColorLeft () {
       //  if(LeftColor.red() > LeftColor.blue()) {
         //    return JewelColor.RED;
@@ -149,6 +167,17 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
        // return null;
    // }
+=======
+    public JewelColor getJewelColorLeft () {
+        if(LeftColor.red() > LeftColor.blue()) {
+            return JewelColor.RED;
+        } else if (LeftColor.blue() > LeftColor.red()){
+            return JewelColor.BLUE;
+        } else {
+            return null;
+        }
+    }
+>>>>>>> 718b93aa4e5a4dc43d82831d7cea0abf10c0d79c
 
     //gets the absolute value of the right encoder value
     public int getRightAbsolute() {

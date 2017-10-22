@@ -83,8 +83,13 @@ public abstract class RelicHardware extends RelicRobot {
         //RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
         //LeftColor = hardwareMap.get(ColorSensor.class, "ColorL");
 
+<<<<<<< HEAD
        // RightDistance = hardwareMap.get(DistanceSensor.class, "DistanceR");
        // LeftDistance = hardwareMap.get(DistanceSensor.class, "DistanceL");
+=======
+        RightDistance = hardwareMap.get(DistanceSensor.class, "ColorR");
+        LeftDistance = hardwareMap.get(DistanceSensor.class, "ColorL");
+>>>>>>> 718b93aa4e5a4dc43d82831d7cea0abf10c0d79c
 
 
 
@@ -98,7 +103,6 @@ public abstract class RelicHardware extends RelicRobot {
         parameters.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
         parameters.loggingEnabled      = true;
         parameters.loggingTag          = "gyro";
-        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
 
         //calls for the imu name from Robot Controller
         gyro = hardwareMap.get(BNO055IMU.class, "gyro");

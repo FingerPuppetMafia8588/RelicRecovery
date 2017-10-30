@@ -24,7 +24,7 @@ public class RelicTeleOpAlt extends RelicHardware {
 
         //sets open hugger postions
         HuggerRight.setPosition(1);
-        HuggerLeft.setPosition(0);
+        HuggerLeft.setPosition(0.01);
 
         //all code after this line will not occur until the start button is pressed
         waitForStart();
@@ -38,9 +38,34 @@ public class RelicTeleOpAlt extends RelicHardware {
         while (opModeIsActive()){
 
             //adds variables for the joystick variables to be used later
-            float x1 = gamepad1.right_stick_x, y1 = -gamepad1.right_stick_y;
-            float x2 = gamepad1.left_stick_x;
+            double x1;
+            double y1;
+            double x2;
 
+            //creates a squared input for the joysticks to allow more controlled movement in low speed
+            if(gamepad1.left_stick_x > 0) {
+                x1 = Math.pow(gamepad1.left_stick_x, 2);
+            } else if (gamepad1.left_stick_x < 0) {
+                x1 = -Math.pow(gamepad1.left_stick_x, 2);
+            } else {
+                x1 = 0;
+            }
+
+            if (gamepad1.left_stick_y > 0) {
+                y1 = -Math.pow(gamepad1.left_stick_y, 2);
+            } else if (gamepad1.left_stick_y < 0) {
+                y1 = Math.pow(gamepad1.left_stick_y, 2);
+            } else {
+                y1 = 0;
+            }
+
+            if (gamepad1.right_stick_x > 0) {
+                x2 = Math.pow(gamepad1.right_stick_x, 2);
+            } else if (gamepad1.right_stick_x < 0) {
+                x2 = -Math.pow(gamepad1.right_stick_x, 2);
+            } else {
+                x2 = 0;
+            }
             // Reset variables
             LeftFrontPowerVar = 0;
             LeftBackPowerVar = 0;
@@ -79,13 +104,13 @@ public class RelicTeleOpAlt extends RelicHardware {
 
             //if right bumper is pressed then grab
             if(gamepad1.right_bumper) {
-                HuggerRight.setPosition(0.75);
-                HuggerLeft.setPosition(0.25);
+                HuggerRight.setPosition(0.70);
+                HuggerLeft.setPosition(0.3);
             }
 
             if (gamepad1.left_bumper) {
-                HuggerRight.setPosition(1);
-                HuggerLeft.setPosition(0);
+                HuggerRight.setPosition(0.85);
+                HuggerLeft.setPosition(0.15);
             }
 
             if (gamepad1.dpad_up) {

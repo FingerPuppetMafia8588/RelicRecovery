@@ -19,6 +19,13 @@ public class GyroTurn extends RelicAutonomousBase {
         while (imu.isCalibrating()) {
 
         }
-        TurnDegrees(0.2, 90);
+        Drive(.5, 10);
+        TurnDegrees(0.3, 90);
+        Drive(.5, 10);
+        TurnDegrees(0.3, 90);
+        Drive(.5, 10);
+        TurnDegrees(0.3, 90);
+        Drive(.5, 10);
+        TurnDegrees(0.3, 90);
     }
 }

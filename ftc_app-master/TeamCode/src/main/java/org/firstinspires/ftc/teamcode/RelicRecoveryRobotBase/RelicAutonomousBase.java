@@ -91,9 +91,12 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     public void TurnDegrees(double power, int target) {
 
         imu.resetZAxisIntegrator();
+        Wait(3);
         zValue = imu.getIntegratedZValue();
 
         while (Math.abs( zValue - target) > 3 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
+
+
 
 
 
@@ -123,6 +126,15 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     }
 
 
+    protected void Grab() {
+        HuggerLeft.setPosition(0.27);
+        HuggerRight.setPosition(0.73);
+    }
+
+    protected void Release() {
+        HuggerLeft.setPosition(0);
+        HuggerRight.setPosition(1);
+    }
 
     //////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////Getters//////////////////////////////////////////////////

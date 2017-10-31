@@ -72,7 +72,7 @@ public class VuMarkTest extends RelicAutonomousBase {
         } else if (key == CryptoKey.MIDDLE) {
             Drive(1, 10);
         } else {
-            Strafe(.5, -5);
+            Strafe(-0.5, 5);
             Drive(1, 10);
         }
 

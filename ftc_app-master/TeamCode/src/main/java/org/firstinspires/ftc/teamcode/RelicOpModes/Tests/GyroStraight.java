@@ -51,10 +51,7 @@ public class GyroStraight extends RelicHardware {
             }
 
 
-            RightFront.setPower(right);
-            RightBack.setPower(right);
-            LeftFront.setPower(left);
-            LeftBack.setPower(left);
+            SetDrivePower(right, right, left, left);
 
         }
 

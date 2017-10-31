@@ -101,16 +101,10 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
 
             if (zValue > target) {  //if gyro is positive, we will turn right
-                LeftFront.setPower(power);
-                RightFront.setPower(-power);
-                LeftBack.setPower(power);
-                RightBack.setPower(-power);
+                SetDrivePower(-power, -power, power, power);
             }
             if (zValue < target) {
-                LeftFront.setPower(-power);
-                RightFront.setPower(power);
-                LeftBack.setPower(-power);
-                RightBack.setPower(power);
+                SetDrivePower(power, power, -power, -power);
             }
 
             zValue = imu.getIntegratedZValue();

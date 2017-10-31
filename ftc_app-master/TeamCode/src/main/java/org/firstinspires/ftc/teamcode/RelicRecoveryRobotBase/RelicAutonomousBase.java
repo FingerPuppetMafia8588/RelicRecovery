@@ -219,7 +219,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
        // double b = RightColor.blue();
        // String rgb = "" + r + ", " + g + ", " + b;
 
-       // telemetry.addData("RGB",rgb);
+       // telemetry.addData("rightRGB",rgb);
        // telemetry.update();
   //  }
 
@@ -230,7 +230,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
       //  double b = LeftColor.blue();
       //  String rgb = "" + r + ", " + g + ", " + b;
 
-      //  telemetry.addData("RGB", rgb);
+      //  telemetry.addData("leftRGB", rgb);
       //  telemetry.update();
    // }
 

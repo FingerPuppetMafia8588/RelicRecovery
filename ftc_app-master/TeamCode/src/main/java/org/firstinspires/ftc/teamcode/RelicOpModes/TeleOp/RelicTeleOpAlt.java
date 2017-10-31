@@ -98,24 +98,41 @@ public class RelicTeleOpAlt extends RelicHardware {
 
             SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);
 
-            //if right bumper is pressed then grab
+            //if right bumper is pressed then grab with hugger
             if(gamepad1.right_bumper) {
                 HuggerRight.setPosition(0.70);
                 HuggerLeft.setPosition(0.3);
             }
 
+            //if left bumper is pressed then release with hugger
             if (gamepad1.left_bumper) {
                 HuggerRight.setPosition(0.85);
                 HuggerLeft.setPosition(0.15);
             }
 
             if (gamepad1.dpad_up) {
-                GlyphArm.setPower(1);
+                ArmPos += 1;
             } else if (gamepad1.dpad_down) {
-                GlyphArm.setPower(-1);
-            } else {
-                GlyphArm.setPower(0);
+                ArmPos -= 1;
             }
+
+            if (ArmPos > 4) {
+                ArmPos = 4;
+            } else if (ArmPos < 1) {
+                ArmPos = 1;
+            }
+
+            if (ArmPos == 1) {
+                GlyphArm.setTargetPosition(0);
+            } else if (ArmPos == 2) {
+                //GlyphArm.setTargetPosition();
+            } else if (ArmPos == 3) {
+                //GlyphArm.setTargetPosition();
+            } else {
+                //GlyphArm.setTargetPosition();
+            }
+            GlyphArm.setPower(0.7);
+
 
             //Update Telemetry
 

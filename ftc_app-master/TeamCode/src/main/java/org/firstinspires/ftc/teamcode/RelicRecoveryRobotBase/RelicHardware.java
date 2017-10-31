@@ -37,6 +37,8 @@ public abstract class RelicHardware extends RelicRobot {
     protected DcMotor RelicArmElv;
     protected DcMotor RelicArmExt;
 
+    protected int ArmPos;
+
     //declares servos for jewel arms
     //protected Servo JewelRight;
     //protected Servo JewelLeft;
@@ -49,9 +51,8 @@ public abstract class RelicHardware extends RelicRobot {
     public IntegratingGyroscope gyro;
     public ModernRoboticsI2cGyro imu;
 
-    int zValue;  //Total rotation left/right
+    protected int zValue;  //Total rotation left/right
     int target = 0;  //Desired angle to turn to
-
 
     //declares the two rev color/distance sensors
    // protected ColorSensor RightColor;
@@ -79,6 +80,10 @@ public abstract class RelicHardware extends RelicRobot {
 
         //calls for motor names from Robot Controller for utility arms
         GlyphArm = hardwareMap.dcMotor.get("glyph");
+
+        GlyphArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        ArmPos = 1;
+
         RelicArmElv = hardwareMap.dcMotor.get("elevation");
         RelicArmExt = hardwareMap.dcMotor.get("extension");
 

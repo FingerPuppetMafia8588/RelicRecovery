@@ -181,6 +181,8 @@ public class RelicTeleOpAlt extends RelicHardware {
             telemetry.addData("Right Hugger", HuggerRight.getPosition());
             telemetry.addData("Left Hugger", HuggerLeft.getPosition());
 
+            telemetry.addData("heading", imu.getIntegratedZValue());
+
             telemetry.update();
         }
     }

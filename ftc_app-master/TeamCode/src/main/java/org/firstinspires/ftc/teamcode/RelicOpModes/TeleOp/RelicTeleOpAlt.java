@@ -22,6 +22,9 @@ public class RelicTeleOpAlt extends RelicHardware {
         //creates time elapsed variable for usage in telemetry
         ElapsedTime runtime = new ElapsedTime();
 
+        //sets the drive speed shifter variable to off by default
+        boolean speedShift = false;
+
         //all code after this line will not occur until the start button is pressed
         waitForStart();
 
@@ -33,7 +36,11 @@ public class RelicTeleOpAlt extends RelicHardware {
 
         while (opModeIsActive()){
 
-            //adds variables for the joystick variables to be used later
+            /////////////////////////////////////////////////////////////////////////////
+            /////////////////////////Drive///////////////////////////////////////////////
+            /////////////////////////////////////////////////////////////////////////////
+
+            //declares variables for the joystick variables to be used later
             double x1;
             double y1;
             double x2;
@@ -62,6 +69,7 @@ public class RelicTeleOpAlt extends RelicHardware {
             } else {
                 x2 = 0;
             }
+
             // Reset variables
             LeftFrontPowerVar = 0;
             LeftBackPowerVar = 0;
@@ -96,7 +104,23 @@ public class RelicTeleOpAlt extends RelicHardware {
                 RightBackPowerVar = (float)Range.scale(RightBackPowerVar, -max, max, -1, 1);
             }
 
-            SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);
+            //adds a speed shifting button to toggle a slow down of the drive
+            if(gamepad1.a && !speedShift) {
+                speedShift = true;
+            } else if (gamepad1.a && speedShift) {
+                speedShift = false;
+            }
+
+            //cuts speed in half if speed shift is on
+            if (!speedShift) {
+                SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);
+            } else {
+                SetDrivePower(RightFrontPowerVar/2,RightBackPowerVar/2,LeftFrontPowerVar/2,LeftBackPowerVar/2);
+            }
+
+            //////////////////////////////////////////////////////////////////////////////////
+            //////////////////////hugger//////////////////////////////////////////////////////
+            //////////////////////////////////////////////////////////////////////////////////
 
             //if right bumper is pressed then grab with hugger
             if(gamepad1.right_bumper) {
@@ -134,7 +158,9 @@ public class RelicTeleOpAlt extends RelicHardware {
             GlyphArm.setPower(0.7);
 
 
-            //Update Telemetry
+            ///////////////////////////////////////////////////////////////////
+            ////////////////////Telemetry//////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////
 
             //Show the elapsed game time
             telemetry.addData("Status", "Run Time: " + runtime.toString());

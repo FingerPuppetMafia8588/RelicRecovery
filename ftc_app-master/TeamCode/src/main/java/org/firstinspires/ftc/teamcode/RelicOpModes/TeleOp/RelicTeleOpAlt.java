@@ -22,10 +22,6 @@ public class RelicTeleOpAlt extends RelicHardware {
         //creates time elapsed variable for usage in telemetry
         ElapsedTime runtime = new ElapsedTime();
 
-        //sets open hugger postions
-        HuggerRight.setPosition(1);
-        HuggerLeft.setPosition(0.01);
-
         //all code after this line will not occur until the start button is pressed
         waitForStart();
 

@@ -97,12 +97,9 @@ public abstract class RelicHardware extends RelicRobot {
        // RightDistance = hardwareMap.get(DistanceSensor.class, "DistanceR");
        // LeftDistance = hardwareMap.get(DistanceSensor.class, "DistanceL");
 
-
-
-
-
-
-
+        //sets open hugger postions
+        HuggerRight.setPosition(1);
+        HuggerLeft.setPosition(0.01);
 
         // sets up parameters for integrated imu
         boolean lastResetState = false;
@@ -111,12 +108,8 @@ public abstract class RelicHardware extends RelicRobot {
         imu = hardwareMap.get(ModernRoboticsI2cGyro.class, "gyro");
         gyro = (IntegratingGyroscope)imu;
 
-
-
-
         if(robotRunType == RobotRunType.AUTONOMOUS){
             imu.calibrate();
-
         }
 
 

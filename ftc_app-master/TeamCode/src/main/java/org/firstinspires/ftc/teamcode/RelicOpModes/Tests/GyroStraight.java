@@ -23,9 +23,11 @@ public class GyroStraight extends RelicHardware {
             //wait to start if gyro is not fully calibrated
         }
 
+        GyroStraight(0.4, 50);
+
     }
 
-    public void GyroStraight (double power, double distance) {
+    public void GyroStraight (double power, double inches) {
 
         //find starting gyro position
         double target = imu.getIntegratedZValue();
@@ -33,9 +35,9 @@ public class GyroStraight extends RelicHardware {
         double right;
         double left;
 
-        distance = distance*1120/12.566;
+        inches = inches*1120/12.566;
 
-        while (Math.abs(RightFront.getCurrentPosition()) < distance) {
+        while (Math.abs(RightFront.getCurrentPosition()) < inches) {
             drift = (imu.getIntegratedZValue() - target)/100;
 
             right = power + drift;
@@ -47,6 +49,7 @@ public class GyroStraight extends RelicHardware {
             if (left > power | left < -power) {
                 left = Range.clip(left, -power, power);
             }
+
 
             RightFront.setPower(right);
             RightBack.setPower(right);

@@ -139,9 +139,17 @@ public class RelicTeleOpAlt extends RelicHardware {
             //Show the elapsed game time
             telemetry.addData("Status", "Run Time: " + runtime.toString());
 
-            //Show the Motor Values
+            //Shows the Motor Values for the DriveTrain
             telemetry.addData("Front Motors", "left (%.2f), right (%.2f)", LeftFrontPowerVar, RightFrontPowerVar);
             telemetry.addData("Back Motors", "left (%.2f), right (%.2f)", LeftBackPowerVar, RightBackPowerVar);
+
+            //shows where the glyph arm is
+            telemetry.addData("ArmPosValue", GlyphArm.getCurrentPosition());
+            telemetry.addData("ArmPosition", ArmPos);
+
+            //shows the current position of the hugger servos
+            telemetry.addData("Right Hugger", HuggerRight.getPosition());
+            telemetry.addData("Left Hugger", HuggerLeft.getPosition());
 
             telemetry.update();
         }

@@ -74,6 +74,12 @@ public abstract class RelicHardware extends RelicRobot {
         LeftFront = hardwareMap.dcMotor.get("lf");
         LeftBack = hardwareMap.dcMotor.get("lb");
 
+        //set to use PID control to regulate speed
+        RightFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        RightBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        LeftFront.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        LeftBack.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         //Reverses the right motors to match direction
         RightFront.setDirection(DcMotor.Direction.REVERSE);
         RightBack.setDirection(DcMotor.Direction.REVERSE);

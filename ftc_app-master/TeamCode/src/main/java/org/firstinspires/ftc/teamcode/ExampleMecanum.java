@@ -20,6 +20,17 @@ public class ExampleMecanum extends LinearOpMode {
     DcMotor RightB;
     DcMotor LeftB;
 
+    //declare joystick variables
+    double x1;
+    double y1;
+    double x2;
+
+    //declare variables to store motor values
+    double rightFront;
+    double leftFront;
+    double rightBack;
+    double leftBack;
+
     public void runOpMode() {
 
         //call for motors
@@ -36,16 +47,6 @@ public class ExampleMecanum extends LinearOpMode {
 
         while (opModeIsActive()) {
 
-            //declare joystick variables
-            double x1;
-            double y1;
-            double x2;
-
-            //declare variables to store motor values
-            double rightFront;
-            double leftFront;
-            double rightBack;
-            double leftBack;
 
             //assign variables to the joystick values
             x1 = gamepad1.left_stick_x;
@@ -93,7 +94,23 @@ public class ExampleMecanum extends LinearOpMode {
 
             }
 
+            ComposeTelemetry();
         }
 
+    }
+
+    public void ComposeTelemetry (){
+        //print joystick values
+        telemetry.addData("drive", y1);
+        telemetry.addData("strafe", x1);
+        telemetry.addData("turn", x2);
+
+        //print motor values
+        telemetry.addData("Right Front", RightF);
+        telemetry.addData("Left Front", LeftF);
+        telemetry.addData("Right Back", RightB);
+        telemetry.addData("Left Back", LeftB);
+
+        telemetry.update()
     }
 }

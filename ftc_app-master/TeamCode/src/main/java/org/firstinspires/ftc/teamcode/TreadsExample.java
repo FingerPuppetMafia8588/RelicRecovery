@@ -34,5 +34,15 @@ public class TreadsExample extends OpMode {
         Left.setPower(-gamepad1.left_stick_y);
         //right joystick corresponds with right motors
         Right.setPower(-gamepad1.right_stick_y);
+
+
+        //compose telemetry
+        telemetry.addData("right joystick", gamepad1.right_stick_y);
+        telemetry.addData("left joystick", gamepad1.left_stick_y);
+
+        telemetry.addData("right drive", Right.getPower());
+        telemetry.addData("left drive", Left.getPower());
+
+        telemetry.update();
     }
 }

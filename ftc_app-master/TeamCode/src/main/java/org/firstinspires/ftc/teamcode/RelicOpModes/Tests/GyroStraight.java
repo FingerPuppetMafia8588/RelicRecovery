@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  */
 
 public class GyroStraight extends RelicHardware {
-    public void runOpMode() {
+    public void runOpMode() throws InterruptedException {
 
         //initializes Robot hardware
         initRobot(RobotRunType.AUTONOMOUS);
@@ -43,15 +43,17 @@ public class GyroStraight extends RelicHardware {
             right = power + drift;
             left = power - drift;
 
-            if (right > power | right < -power) {
-                right = Range.clip(right, -power, power);
+            if (right > 1 | right < -1) {
+                right = Range.clip(right, -1, 1);
             }
-            if (left > power | left < -power) {
-                left = Range.clip(left, -power, power);
+            if (left > 1 | left < -1) {
+                left = Range.clip(left, -1, 1);
             }
 
 
             SetDrivePower(right, right, left, left);
+
+            
 
         }
 

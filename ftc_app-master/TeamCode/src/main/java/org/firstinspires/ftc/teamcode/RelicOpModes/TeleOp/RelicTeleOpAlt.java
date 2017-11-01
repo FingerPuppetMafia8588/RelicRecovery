@@ -107,10 +107,10 @@ public class RelicTeleOpAlt extends RelicHardware {
             //adds a speed shifting button to toggle a slow down of the drive
             if(gamepad1.a && !speedShift) {
                 speedShift = true;
-                sleep(50);
+                sleep(300);
             } else if (gamepad1.a && speedShift) {
                 speedShift = false;
-                sleep(50);
+                sleep(300);
             }
 
             //cuts speed in half if speed shift is on
@@ -138,10 +138,10 @@ public class RelicTeleOpAlt extends RelicHardware {
 
             if (gamepad1.dpad_up) {
                 ArmPos += 1;
-                sleep(50);
+                sleep(300);
             } else if (gamepad1.dpad_down) {
                 ArmPos -= 1;
-                sleep(50);
+                sleep(300);
             }
 
             if (ArmPos > 4) {

@@ -51,5 +51,15 @@ public class TileRunner extends OpMode {
         backright.setPower(-gamepad1.right_stick_y);
         frontleft.setPower(-gamepad1.left_stick_y);
         backleft.setPower(-gamepad1.left_stick_y);
+
+        telemetry.addData("right joystick", gamepad1.right_stick_y);
+        telemetry.addData("left joystick", gamepad1.left_stick_y);
+
+        telemetry.addData("right front", frontright.getPower());
+        telemetry.addData("right back", backright.getPower());
+        telemetry.addData("left front", frontright.getPower());
+        telemetry.addData("left back", backleft.getPower());
+
+        telemetry.update();
     }
 }

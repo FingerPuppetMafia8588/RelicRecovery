@@ -69,5 +69,16 @@ public class AlCaDroneVV  extends OpMode {
             conveyor.setPower(1);
         }else {conveyor.setPower(0);
         }
+
+
+        //compose telemetry
+        telemetry.addData("right drive", Right.getPower());
+        telemetry.addData("left drive", Left.getPower());
+
+        telemetry.addData("flipper", flipper.getPower());
+        telemetry.addData("conveyor", conveyor.getPower());
+        telemetry.addData("collector", collector.getPower());
+
+        telemetry.update();
     }
 }

@@ -111,6 +111,6 @@ public class ExampleMecanum extends LinearOpMode {
         telemetry.addData("Right Back", RightB);
         telemetry.addData("Left Back", LeftB);
 
-        telemetry.update()
+        telemetry.update();
     }
 }

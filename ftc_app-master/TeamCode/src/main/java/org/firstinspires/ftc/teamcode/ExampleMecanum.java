@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.Range;
@@ -9,6 +10,7 @@ import com.qualcomm.robotcore.util.Range;
  * Created by isaac.blandin on 10/31/17.
  */
 
+@TeleOp(name = "CrabExample")
 public class ExampleMecanum extends LinearOpMode {
 
 
@@ -88,7 +90,7 @@ public class ExampleMecanum extends LinearOpMode {
                 RightB.setPower(rightBack);
                 LeftB.setPower(leftBack);
 
-                
+
             }
 
         }

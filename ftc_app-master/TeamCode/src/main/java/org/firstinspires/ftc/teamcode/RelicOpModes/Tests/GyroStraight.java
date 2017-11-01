@@ -53,7 +53,7 @@ public class GyroStraight extends RelicHardware {
 
             SetDrivePower(right, right, left, left);
 
-            
+
 
         }
 

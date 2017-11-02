@@ -246,7 +246,6 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     public TeamColor assignTeamColor() {
 
         boolean picked = false;
-        return null;
 
         //wait until imput is selected
         while(!picked) {
@@ -264,12 +263,13 @@ public abstract class RelicAutonomousBase extends RelicHardware {
                 return TeamColor.RED;
             }
         }
+        return null;
     }
 
     //user input on Balance Stone
     public BalanceStone AssignBalance(){
+
         boolean picked = false;
-        return null;
 
         //wait until input is selected
         while(!picked){
@@ -287,5 +287,6 @@ public abstract class RelicAutonomousBase extends RelicHardware {
                 return BalanceStone.FRONT;
             }
         }
+        return null;
     }
 }

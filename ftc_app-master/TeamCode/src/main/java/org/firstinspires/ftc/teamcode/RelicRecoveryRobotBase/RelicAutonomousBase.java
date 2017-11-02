@@ -267,7 +267,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     }
 
     //user input on Balance Stone
-    public BalanceStone AssignBalance(){
+    public BalanceStone assignBalance(){
 
         boolean picked = false;
 

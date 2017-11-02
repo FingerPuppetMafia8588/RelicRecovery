@@ -91,14 +91,18 @@ public void runOpMode() {
     if(isblue && isfront) {
         //this code runs if the robot is on the front blue balance stone
 
+
     } else if (isblue && !isfront){
         //this code runs if the robot is on the back blue balance stone
+
 
     } else if (!isblue && isfront) {
         //this code runs if the robot is on the front red balance stone
 
+
     } else {
         //this code runs if the robot is on the back red balance stone
+
         
     }
 }

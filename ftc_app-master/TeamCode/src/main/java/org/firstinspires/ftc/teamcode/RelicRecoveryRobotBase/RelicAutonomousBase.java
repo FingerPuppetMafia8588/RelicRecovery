@@ -6,9 +6,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.teamcode.enums.BalanceStone;
 import org.firstinspires.ftc.teamcode.enums.CryptoKey;
 import org.firstinspires.ftc.teamcode.enums.DirectionTurn;
 import org.firstinspires.ftc.teamcode.enums.JewelColor;
+import org.firstinspires.ftc.teamcode.enums.TeamColor;
 
 import java.util.Locale;
 
@@ -236,8 +238,54 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
 
     ////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////Formatting///////////////////////////////////////////////
+    ///////////////////////////////Init Setuo///////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////
 
 
+    //user input on team color
+    public TeamColor assignTeamColor() {
+
+        boolean picked = false;
+        return null;
+
+        //wait until imput is selected
+        while(!picked) {
+            if (gamepad2.a) {
+                telemetry.addData("Team", "Blue");
+                telemetry.update();
+
+                picked = true;
+                return TeamColor.BLUE;
+            } else if (gamepad2.b) {
+                telemetry.addData("Team", "Red");
+                telemetry.update();
+
+                picked = true;
+                return TeamColor.RED;
+            }
+        }
+    }
+
+    //user input on Balance Stone
+    public BalanceStone AssignBalance(){
+        boolean picked = false;
+        return null;
+
+        //wait until input is selected
+        while(!picked){
+            if (gamepad2.y){
+                telemetry.addData("Balance", "Back");
+                telemetry.update();
+
+                picked = true;
+                return BalanceStone.BACK;
+            } else if (gamepad2.a) {
+                telemetry.addData("Balance", "Front");
+                telemetry.update();
+
+                picked = true;
+                return BalanceStone.FRONT;
+            }
+        }
+    }
 }

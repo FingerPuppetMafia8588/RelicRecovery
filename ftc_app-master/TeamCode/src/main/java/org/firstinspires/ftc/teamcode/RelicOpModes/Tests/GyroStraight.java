@@ -31,10 +31,13 @@ public class GyroStraight extends RelicHardware {
 
         //find starting gyro position
         double target = imu.getIntegratedZValue();
+
+        //create variables to be used later
         double drift;
         double right;
         double left;
 
+        //convert encoder ticks to inches
         inches = inches*1120/12.566;
 
         while (Math.abs(RightFront.getCurrentPosition()) < inches) {
@@ -43,6 +46,7 @@ public class GyroStraight extends RelicHardware {
             right = power + drift;
             left = power - drift;
 
+            //limits motor values if the variable exceeds ranges
             if (right > 1 | right < -1) {
                 right = Range.clip(right, -1, 1);
             }
@@ -51,12 +55,14 @@ public class GyroStraight extends RelicHardware {
             }
 
 
+            //assign motor powers from variable
             SetDrivePower(right, right, left, left);
 
 
 
         }
 
+        //stop once the target distance is met
         Stop();
 
     }

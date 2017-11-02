@@ -37,11 +37,14 @@ public void runOpMode() {
     boolean teampicked = false;
     boolean balancepicked = false;
 
-    boolean isblue;
-    boolean isfront;
+    boolean isblue = false;
+    boolean isfront = false;
 
     //wait for user inout on team
     // x for blue, b for red
+    telemetry.addLine("Press X for blue team or press B for red team");
+    telemetry.update();
+
     while(!teampicked){
         if (gamepad2.x){
             telemetry.addData("Team", "Blue");
@@ -60,6 +63,9 @@ public void runOpMode() {
 
     //wait for user inout on which balance stone is being used
     // a for front, y for back
+    telemetry.addLine("press A for front balance stone or Y for back stone");
+    telemetry.update();
+
     while(!balancepicked){
         if (gamepad2.a) {
             telemetry.addData("Balance", "Front");
@@ -82,5 +88,18 @@ public void runOpMode() {
         //wait for gyro to be fully calibrated
     }
 
+    if(isblue && isfront) {
+        //this code runs if the robot is on the front blue balance stone
+
+    } else if (isblue && !isfront){
+        //this code runs if the robot is on the back blue balance stone
+
+    } else if (!isblue && isfront) {
+        //this code runs if the robot is on the front red balance stone
+
+    } else {
+        //this code runs if the robot is on the back red balance stone
+        
+    }
 }
 }

@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
 @Autonomous(name = "branches")
 public class BranchesTest extends RelicAutonomousBase {
 
-public void runOpMode() {
+public void runOpMode() throws InterruptedException {
 
     //initialize the robot hardware
     initRobot(RobotRunType.AUTONOMOUS);

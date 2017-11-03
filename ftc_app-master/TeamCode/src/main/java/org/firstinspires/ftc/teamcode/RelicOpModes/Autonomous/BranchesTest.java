@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Autonomous;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
@@ -10,7 +12,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
 /**
  * Created by isaac.blandin on 11/1/17.
  */
-
+@Autonomous(name = "branches")
 public class BranchesTest extends RelicAutonomousBase {
 
 public void runOpMode() {

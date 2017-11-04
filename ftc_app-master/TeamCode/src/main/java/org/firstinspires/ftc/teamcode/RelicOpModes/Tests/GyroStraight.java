@@ -63,7 +63,7 @@ public class GyroStraight extends RelicHardware {
         }
 
         //stop once the target distance is met
-        Stop();
+        StopDrive();
 
     }
 }

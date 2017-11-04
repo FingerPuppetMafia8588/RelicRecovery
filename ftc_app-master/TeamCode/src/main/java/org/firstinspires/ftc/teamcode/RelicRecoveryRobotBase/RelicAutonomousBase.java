@@ -89,7 +89,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Stop();
     }
 
-    // turns the robot to a certain gyro heading with a set power.
+    // turns the robot to a certain number of degrees off of current position
     public void TurnDegrees(double power, int target) {
 
         imu.resetZAxisIntegrator();
@@ -111,7 +111,26 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
             zValue = imu.getIntegratedZValue();
         }
-        stop();
+        Stop();
+    }
+
+    //turn to a gyro heading based on initial robot position
+    public void TurnHeading(double power, int target){
+        zValue = imu.getIntegratedZValue();
+
+        while(Math.abs(zValue - target) > 3 && opModeIsActive()) {
+
+            if (zValue > target) {  //if gyro is positive, we will turn right
+                SetDrivePower(-power, -power, power, power);
+            }
+            if (zValue < target) {
+                SetDrivePower(power, power, -power, -power);
+            }
+
+            zValue = imu.getIntegratedZValue();
+
+        }
+        Stop();
     }
 
     protected void Wait(double seconds) {

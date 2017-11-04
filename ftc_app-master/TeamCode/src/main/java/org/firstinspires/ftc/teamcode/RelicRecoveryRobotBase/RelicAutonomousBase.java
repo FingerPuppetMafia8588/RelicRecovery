@@ -161,14 +161,30 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     }
 
 
+    //////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////manipulators///////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////
+
+    //move hugger arms to grabbing position
     protected void Grab() {
         HuggerLeft.setPosition(0.27);
         HuggerRight.setPosition(0.73);
     }
 
+    //move hugger arms to open position
     protected void Release() {
         HuggerLeft.setPosition(0);
         HuggerRight.setPosition(1);
+    }
+
+    //autonomous function for jewels when on red team
+    protected void keepRedJewel() {
+
+    }
+
+    //autonomous function for jewels when on blue team
+    protected void keepBlueJewel() {
+
     }
 
     //////////////////////////////////////////////////////////////////////////////////////

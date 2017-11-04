@@ -50,13 +50,11 @@ public void runOpMode() throws InterruptedException {
     while(!teampicked){
         if (gamepad2.x){
             telemetry.addData("Team", "Blue");
-            telemetry.update();
 
             teampicked = true;
             isblue = true;
         } else if (gamepad2.b) {
             telemetry.addData("Team", "Red");
-            telemetry.update();
 
             teampicked = true;
             isblue = false;

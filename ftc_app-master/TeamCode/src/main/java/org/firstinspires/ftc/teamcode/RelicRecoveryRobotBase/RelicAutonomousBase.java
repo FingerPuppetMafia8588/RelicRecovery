@@ -96,17 +96,24 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Wait(3);
         zValue = imu.getIntegratedZValue();
 
-        while (Math.abs( zValue - target) > 3 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
-
-
-
-
+        while (Math.abs( zValue - target) > 5 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
 
             if (zValue > target) {  //if gyro is positive, we will turn right
                 SetDrivePower(-power, -power, power, power);
             }
             if (zValue < target) {
                 SetDrivePower(power, power, -power, -power);
+            }
+
+            zValue = imu.getIntegratedZValue();
+        }
+        while (Math.abs( zValue - target) > 1 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
+
+            if (zValue > target) {  //if gyro is positive, we will turn right
+                SetDrivePower(-power/2, -power/2, power/2, power/2);
+            }
+            if (zValue < target) {
+                SetDrivePower(power/2, power/2, -power/2, -power/2);
             }
 
             zValue = imu.getIntegratedZValue();
@@ -118,7 +125,8 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     public void TurnHeading(double power, int target){
         zValue = imu.getIntegratedZValue();
 
-        while(Math.abs(zValue - target) > 3 && opModeIsActive()) {
+        //move at full speed unitl within 5 degrees
+        while(Math.abs(zValue - target) > 5 && opModeIsActive()) {
 
             if (zValue > target) {  //if gyro is positive, we will turn right
                 SetDrivePower(-power, -power, power, power);
@@ -129,6 +137,18 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
             zValue = imu.getIntegratedZValue();
 
+        }
+        //slow down to half once within 5 degrees to create more precision
+        while (Math.abs( zValue - target) > 1 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
+
+            if (zValue > target) {  //if gyro is positive, we will turn right
+                SetDrivePower(-power/2, -power/2, power/2, power/2);
+            }
+            if (zValue < target) {
+                SetDrivePower(power/2, power/2, -power/2, -power/2);
+            }
+
+            zValue = imu.getIntegratedZValue();
         }
         StopDrive();
     }

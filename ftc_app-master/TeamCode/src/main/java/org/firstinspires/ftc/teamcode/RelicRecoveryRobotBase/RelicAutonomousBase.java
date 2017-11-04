@@ -60,7 +60,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         }
 
         //stop the motors
-        Stop();
+        StopDrive();
     }
 
     //applies power to wheels for correct strafing
@@ -86,7 +86,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         }
 
         //Stop Motor
-        Stop();
+        StopDrive();
     }
 
     // turns the robot to a certain number of degrees off of current position
@@ -111,7 +111,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
             zValue = imu.getIntegratedZValue();
         }
-        Stop();
+        StopDrive();
     }
 
     //turn to a gyro heading based on initial robot position
@@ -130,7 +130,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
             zValue = imu.getIntegratedZValue();
 
         }
-        Stop();
+        StopDrive();
     }
 
     protected void Wait(double seconds) {

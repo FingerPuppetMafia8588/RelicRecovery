@@ -136,7 +136,7 @@ public abstract class RelicHardware extends RelicRobot {
     }
 
     //method to easily stop the robot
-    public void Stop() {
+    public void StopDrive() {
         SetDrivePower(0, 0, 0, 0);
     }
 

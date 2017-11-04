@@ -38,7 +38,7 @@ public class TestAuto extends RelicAutonomousBase {
         VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
         VuforiaTrackable relicTemplate = relicTrackables.get(0);
 
-        
+
         waitForStart();
 
 

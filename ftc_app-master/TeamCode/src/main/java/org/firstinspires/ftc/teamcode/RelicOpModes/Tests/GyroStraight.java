@@ -40,7 +40,7 @@ public class GyroStraight extends RelicHardware {
         //convert encoder ticks to inches
         inches = inches*1120/12.566;
 
-        while (Math.abs(RightFront.getCurrentPosition()) < inches) {
+        while (Math.abs(RightFront.getCurrentPosition()) < inches && opModeIsActive()) {
             drift = (imu.getIntegratedZValue() - target)/100;
 
             right = power + drift;

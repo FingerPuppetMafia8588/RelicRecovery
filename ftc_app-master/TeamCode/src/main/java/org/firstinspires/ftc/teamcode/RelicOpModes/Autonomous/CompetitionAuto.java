@@ -86,6 +86,8 @@ public void runOpMode() throws InterruptedException {
     //all code after this runs after start is pressed on the robot controller
     waitForStart();
     Grab();
+    Wait(1);
+    raiseArm();
 
     //prepare vuforia
     relicTrackables.activate();
@@ -176,5 +178,8 @@ public void runOpMode() throws InterruptedException {
 
 
     }
+
+    //lower arm to home position for start of teleop
+    lowerArm();
 }
 }

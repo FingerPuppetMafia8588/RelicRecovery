@@ -160,7 +160,7 @@ public class RelicTeleOpAlt extends RelicHardware {
             if (ArmPos == 1) {
                 GlyphArm.setTargetPosition(0);
             } else if (ArmPos == 2) {
-                GlyphArm.setTargetPosition(300);
+                GlyphArm.setTargetPosition(500);
             } else if (ArmPos == 3) {
                 GlyphArm.setTargetPosition(1900);
             } else {

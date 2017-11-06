@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
@@ -16,7 +17,8 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by FTC on 10/26/2017.
  */
 
-@Autonomous (name = "Comp Autonomous")
+@Disabled
+@Autonomous (name = "Comp")
 public class TestAuto extends RelicAutonomousBase {
 
     @Override

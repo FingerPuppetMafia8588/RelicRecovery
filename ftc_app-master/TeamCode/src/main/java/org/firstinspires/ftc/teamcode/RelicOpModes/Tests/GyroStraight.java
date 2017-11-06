@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
@@ -13,6 +14,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  */
 
 @Autonomous(name = "straightTest")
+@Disabled
 public class GyroStraight extends RelicAutonomousBase {
     public void runOpMode() throws InterruptedException {
 

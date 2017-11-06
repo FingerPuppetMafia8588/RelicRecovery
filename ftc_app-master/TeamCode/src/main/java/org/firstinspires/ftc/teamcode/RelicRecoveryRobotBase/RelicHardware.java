@@ -46,7 +46,7 @@ public abstract class RelicHardware extends RelicRobot {
 
     //declares servos for hugger
     protected Servo HuggerRight;
-    public Servo HuggerLeft;
+    protected Servo HuggerLeft;
 
     protected Servo HuggerRightBottom;
     protected Servo HuggerLeftBottom;

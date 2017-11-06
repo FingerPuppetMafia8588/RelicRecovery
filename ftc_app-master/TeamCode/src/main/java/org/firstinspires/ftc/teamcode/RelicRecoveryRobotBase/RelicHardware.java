@@ -17,6 +17,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.internal.system.AppUtil;
+import org.firstinspires.ftc.robotcore.internal.system.ServiceController;
 import org.firstinspires.ftc.teamcode.enums.RobotRunType;
 
 import java.io.File;
@@ -46,6 +47,9 @@ public abstract class RelicHardware extends RelicRobot {
     //declares servos for hugger
     protected Servo HuggerRight;
     public Servo HuggerLeft;
+
+    protected Servo HuggerRightBottom;
+    protected Servo HuggerLeftBottom;
 
     //declares variables for gyro
     public IntegratingGyroscope gyro;
@@ -87,6 +91,7 @@ public abstract class RelicHardware extends RelicRobot {
         //calls for motor names from Robot Controller for utility arms
         GlyphArm = hardwareMap.dcMotor.get("glyph");
 
+        GlyphArm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         GlyphArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         ArmPos = 1;
 
@@ -99,6 +104,8 @@ public abstract class RelicHardware extends RelicRobot {
 
         HuggerRight = hardwareMap.servo.get("huggerR");
         HuggerLeft = hardwareMap.servo.get("huggerL");
+        HuggerRightBottom = hardwareMap.servo.get("huggerRB");
+        HuggerLeftBottom = hardwareMap.servo.get("huggerLB");
 
         // calls for names from Robot Controller for color/distance sensors.
         //RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
@@ -111,6 +118,8 @@ public abstract class RelicHardware extends RelicRobot {
         //sets open hugger positions to fit in starting constraints
         HuggerRight.setPosition(1);
         HuggerLeft.setPosition(0.01);
+        HuggerRightBottom.setPosition(1);
+        HuggerLeftBottom.setPosition(0.01);
 
         // sets up parameters for integrated imu
         boolean lastResetState = false;

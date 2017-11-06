@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.RelicOpModes.Autonomous;
+package org.firstinspires.ftc.teamcode.RelicOpModes.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;

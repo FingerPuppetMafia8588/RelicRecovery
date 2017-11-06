@@ -82,7 +82,12 @@ public void runOpMode() throws InterruptedException {
         }
     }
 
-
+    //if a long time passes between init and match start, press a to reset the gyro value to 0 to negate imu drift.
+    while (!opModeIsActive()) {
+        if(gamepad2.a) {
+            imu.resetZAxisIntegrator();
+        }
+    }
     //all code after this runs after start is pressed on the robot controller
     waitForStart();
     Grab();

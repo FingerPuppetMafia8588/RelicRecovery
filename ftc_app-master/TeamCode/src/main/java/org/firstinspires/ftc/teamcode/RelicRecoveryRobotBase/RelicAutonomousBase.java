@@ -169,12 +169,16 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     protected void Grab() {
         HuggerLeft.setPosition(0.27);
         HuggerRight.setPosition(0.73);
+        HuggerRightBottom.setPosition(0.73);
+        HuggerLeftBottom.setPosition(0.27);
     }
 
     //move hugger arms to open position
     protected void Release() {
         HuggerLeft.setPosition(0);
         HuggerRight.setPosition(1);
+        HuggerRightBottom.setPosition(1);
+        HuggerLeftBottom.setPosition(0);
     }
 
     //autonomous function for jewels when on red team
@@ -240,8 +244,8 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         LeftFront.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         LeftBack.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        while(opModeIsActive() && RightFront.getCurrentPosition() != 0 && RightBack.getCurrentPosition() != 0
-                && LeftFront.getCurrentPosition() != 0 && LeftBack.getCurrentPosition() != 0 ) {
+        while(opModeIsActive() && RightFront.getCurrentPosition() > 3 && RightBack.getCurrentPosition() > 3
+                && LeftFront.getCurrentPosition() > 3 && LeftBack.getCurrentPosition() > 3 ) {
 
         }
 

@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.RelicOpModes.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
+import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackable;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaTrackables;
@@ -84,12 +85,53 @@ public void runOpMode() throws InterruptedException {
 
     //all code after this runs after start is pressed on the robot controller
     waitForStart();
+    Grab();
     while (imu.isCalibrating()){
         //wait for gyro to be fully calibrated
+    }
+    //prepare vuforia
+    relicTrackables.activate();
+    RelicRecoveryVuMark VuMark = RelicRecoveryVuMark.from(relicTemplate);
+
+    int key = 0;
+
+    //wait for a vumark to be identified
+    while(VuMark == RelicRecoveryVuMark.UNKNOWN) {
+        VuMark = RelicRecoveryVuMark.from(relicTemplate);
+    }
+
+    //store the results in the key enum
+    while( key == 0) {
+        if (VuMark == RelicRecoveryVuMark.RIGHT) {
+            key = 1;
+        } else if (VuMark == RelicRecoveryVuMark.CENTER) {
+            key = 2;
+        } else if (VuMark == RelicRecoveryVuMark.LEFT) {
+            key = 3;
+        } else {
+            key = 0;
+        }
     }
 
     if(isblue && isfront) {
         //this code runs if the robot is on the front blue balance stone
+
+        Drive(0.4, 20);
+        SetDrivePower(-0.25,-0.25,-0.25, -0.25);
+        Wait(0.35);
+        StopDrive();
+
+        if (key == 1) {
+            Drive(0.3,22);
+        } else if (key == 2) {
+            Drive(0.3, 15);
+
+        } else if (key == 3){
+            Drive(0.3, 8);
+        }
+        TurnHeading(0.4, 90);
+        Drive(0.4, 8);
+        Release();
 
 
     } else if (isblue && !isfront){

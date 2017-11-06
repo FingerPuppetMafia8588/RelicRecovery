@@ -14,7 +14,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by isaac.blandin on 11/1/17.
  */
 @Autonomous(name = "Comp Auto")
-public class BranchesTest extends RelicAutonomousBase {
+public class CompetitionAuto extends RelicAutonomousBase {
 
 public void runOpMode() throws InterruptedException {
 

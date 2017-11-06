@@ -191,6 +191,24 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         HuggerLeftBottom.setPosition(0);
     }
 
+    //raise hugger to allow movement
+    protected void raiseArm() {
+        GlyphArm.setTargetPosition(500);
+        while (GlyphArm.getCurrentPosition() < GlyphArm.getTargetPosition()) {
+            GlyphArm.setPower(0.4);
+        }
+        GlyphArm.setPower(0);
+    }
+
+    // lower arm to prep for teleop
+    protected void lowerArm() {
+        GlyphArm.setTargetPosition(0);
+        while (GlyphArm.getCurrentPosition() > GlyphArm.getTargetPosition()) {
+            GlyphArm.setPower(-0.15);
+        }
+        GlyphArm.setPower(0);
+    }
+
     //autonomous function for jewels when on red team
     protected void keepRedJewel() {
 

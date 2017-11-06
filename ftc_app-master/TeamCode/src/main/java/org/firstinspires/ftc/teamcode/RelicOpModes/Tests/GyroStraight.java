@@ -1,7 +1,10 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.Range;
 
+import org.firstinspires.ftc.teamcode.RelicRecoveryRobotBase.RelicAutonomousBase;
 import org.firstinspires.ftc.teamcode.RelicRecoveryRobotBase.RelicHardware;
 import org.firstinspires.ftc.teamcode.enums.RobotRunType;
 
@@ -9,7 +12,8 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by isaac.blandin on 10/31/17.
  */
 
-public class GyroStraight extends RelicHardware {
+@Autonomous(name = "straightTest")
+public class GyroStraight extends RelicAutonomousBase {
     public void runOpMode() throws InterruptedException {
 
         //initializes Robot hardware
@@ -29,6 +33,7 @@ public class GyroStraight extends RelicHardware {
 
     public void GyroStraight (double power, double inches) {
 
+        ResetEncoders();
         //find starting gyro position
         double target = imu.getIntegratedZValue();
 
@@ -41,10 +46,11 @@ public class GyroStraight extends RelicHardware {
         inches = inches*1120/12.566;
 
         while (Math.abs(RightFront.getCurrentPosition()) < inches && opModeIsActive()) {
+
             drift = (imu.getIntegratedZValue() - target)/100;
 
-            right = power + drift;
-            left = power - drift;
+            right = power - drift;
+            left = power + drift;
 
             //limits motor values if the variable exceeds ranges
             if (right > 1 | right < -1) {

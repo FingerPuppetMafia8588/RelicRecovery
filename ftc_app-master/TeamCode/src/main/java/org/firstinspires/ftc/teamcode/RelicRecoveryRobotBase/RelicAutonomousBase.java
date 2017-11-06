@@ -61,6 +61,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
                 hasCorrected = true;
             }
+            printGyroHeading();
         }
 
         //stop the motors
@@ -109,6 +110,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
                 SetDrivePower(power, power, -power, -power);
             }
 
+            printGyroHeading();
             zValue = imu.getIntegratedZValue();
         }
         while (Math.abs( zValue - target) > 1 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
@@ -120,6 +122,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
                 SetDrivePower(power/2, power/2, -power/2, -power/2);
             }
 
+            printGyroHeading();
             zValue = imu.getIntegratedZValue();
         }
         StopDrive();
@@ -139,6 +142,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
                 SetDrivePower(power, power, -power, -power);
             }
 
+            printGyroHeading();
             zValue = imu.getIntegratedZValue();
 
         }
@@ -152,6 +156,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
                 SetDrivePower(power/2, power/2, -power/2, -power/2);
             }
 
+            printGyroHeading();
             zValue = imu.getIntegratedZValue();
         }
         StopDrive();
@@ -321,6 +326,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     public void printGyroHeading () {
 
        telemetry.addData("heading", imu.getIntegratedZValue());
+       telemetry.update();
     }
 
 

@@ -141,6 +141,7 @@ public void runOpMode() throws InterruptedException {
         // pull out to stop contact with glyph
         quickReverse(0.4, 0.5);
 
+
     } else if (isblue && !isfront){
         //this code runs if the robot is on the back blue balance stone
 
@@ -166,6 +167,7 @@ public void runOpMode() throws InterruptedException {
         Release();
         //pull out to stop contact with glyph
         quickReverse(0.4, 0.5);
+
 
     } else {
         //this code runs if the robot is on the back red balance stone

@@ -153,6 +153,12 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         StopDrive();
     }
 
+    public void quickReverse (double power, double time) {
+        SetDrivePower(-power, -power, -power, -power);
+        Wait(time);
+        StopDrive();
+    }
+
     protected void Wait(double seconds) {
         ElapsedTime t = new ElapsedTime(System.nanoTime());
         while (opModeIsActive() && t.time() <= seconds) {

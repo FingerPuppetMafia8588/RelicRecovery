@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
@@ -18,6 +19,8 @@ public class RelicTeleOpAlt extends RelicHardware {
     public void runOpMode() throws InterruptedException{
 
         initRobot(RobotRunType.TELEOP);
+
+        GlyphArm.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
         //creates time elapsed variable for usage in telemetry
         ElapsedTime runtime = new ElapsedTime();
@@ -128,11 +131,15 @@ public class RelicTeleOpAlt extends RelicHardware {
             if(gamepad1.right_bumper) {
                 HuggerRight.setPosition(0.70);
                 HuggerLeft.setPosition(0.3);
+                HuggerRightBottom.setPosition(0.70);
+                HuggerLeftBottom.setPosition(0.3);
             }
 
             //if left bumper is pressed then release with hugger
             if (gamepad1.left_bumper) {
                 HuggerRight.setPosition(0.85);
+                HuggerRightBottom.setPosition(0.85);
+                HuggerLeft.setPosition(0.15);
                 HuggerLeft.setPosition(0.15);
             }
 
@@ -153,13 +160,20 @@ public class RelicTeleOpAlt extends RelicHardware {
             if (ArmPos == 1) {
                 GlyphArm.setTargetPosition(0);
             } else if (ArmPos == 2) {
-                //GlyphArm.setTargetPosition();
+                GlyphArm.setTargetPosition(300);
             } else if (ArmPos == 3) {
-                //GlyphArm.setTargetPosition();
+                GlyphArm.setTargetPosition(1900);
             } else {
-                //GlyphArm.setTargetPosition();
+                GlyphArm.setTargetPosition(3000);
             }
-            GlyphArm.setPower(0.7);
+
+            if(GlyphArm.getCurrentPosition() < GlyphArm.getTargetPosition()) {
+                GlyphArm.setPower(0.4);
+            } else if (GlyphArm.getCurrentPosition() > GlyphArm.getTargetPosition()) {
+                GlyphArm.setPower(-0.15);
+            } else {
+                GlyphArm.setPower(0);
+            }
 
 
             ///////////////////////////////////////////////////////////////////

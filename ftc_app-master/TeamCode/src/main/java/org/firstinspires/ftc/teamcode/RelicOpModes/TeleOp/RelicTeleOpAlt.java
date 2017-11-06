@@ -116,11 +116,16 @@ public class RelicTeleOpAlt extends RelicHardware {
                 sleep(300);
             }
 
-            //cuts speed in half if speed shift is on
+            //reduces speed to half if speed shift is on
             if (!speedShift) {
                 SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);
             } else {
                 SetDrivePower(RightFrontPowerVar/2,RightBackPowerVar/2,LeftFrontPowerVar/2,LeftBackPowerVar/2);
+            }
+
+            //reduces speed to one-third power if x is being actively pressed down
+            if (gamepad1.x) {
+                SetDrivePower(RightFrontPowerVar/3, RightBackPowerVar/3, LeftFrontPowerVar/3, LeftBackPowerVar/3);
             }
 
             //////////////////////////////////////////////////////////////////////////////////

@@ -36,7 +36,6 @@ public void runOpMode() throws InterruptedException {
     VuforiaTrackables relicTrackables = this.vuforia.loadTrackablesFromAsset("RelicVuMark");
     VuforiaTrackable relicTemplate = relicTrackables.get(0);
 
-
     boolean teampicked = false;
     boolean balancepicked = false;
 
@@ -83,13 +82,11 @@ public void runOpMode() throws InterruptedException {
         }
     }
 
-    
+
     //all code after this runs after start is pressed on the robot controller
     waitForStart();
     Grab();
-    while (imu.isCalibrating()){
-        //wait for gyro to be fully calibrated
-    }
+
     //prepare vuforia
     relicTrackables.activate();
     RelicRecoveryVuMark VuMark = RelicRecoveryVuMark.from(relicTemplate);
@@ -114,9 +111,13 @@ public void runOpMode() throws InterruptedException {
         }
     }
 
+    while (imu.isCalibrating()){
+        //wait for gyro to be fully calibrated
+    }
+
+
     //drive off of balance stone
     Drive(0.4, 20);
-
     //reverse to line up with balance stone's edge
     quickReverse(0.25, 0.35);
 

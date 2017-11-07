@@ -127,7 +127,7 @@ public void runOpMode() throws InterruptedException {
     Drive(0.4, 20);
     //reverse to line up with balance stone's edge
     quickReverse(0.25, 0.35);
-    
+
     if(isblue && isfront) {
         //this code runs if the robot is on the front blue balance stone
 

@@ -203,6 +203,8 @@ public class RelicTeleOpAlt extends RelicHardware {
             telemetry.addData("heading", imu.getIntegratedZValue());
 
             telemetry.update();
+
+            idle();
         }
     }
 }

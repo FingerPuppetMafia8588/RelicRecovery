@@ -123,6 +123,12 @@ public void runOpMode() throws InterruptedException {
     }
 
 
+    if (isblue) {
+        keepBlueJewel();
+    } else {
+        keepRedJewel();
+    }
+
     //drive off of balance stone
     Drive(0.4, 20);
     //reverse to line up with balance stone's edge

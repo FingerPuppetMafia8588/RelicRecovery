@@ -216,12 +216,30 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
     //autonomous function for jewels when on red team
     protected void keepRedJewel() {
-
+        JewelRight.setPosition(1);
+        Wait(1);
+        if (getJewelColorRight() == JewelColor.RED) {
+            Drive(0.3, 3);
+        } else {
+            quickReverse(0.3, 1);
+            Drive(0.3, 0.3);
+        }
+        JewelRight.setPosition(0.5);
+        Wait(0.5);
     }
 
     //autonomous function for jewels when on blue team
     protected void keepBlueJewel() {
-
+        JewelLeft.setPosition(0);
+        Wait(1);
+        if (getJewelColorLeft() == JewelColor.BLUE) {
+            Drive(0.3, 3);
+        } else {
+            quickReverse(0.3, 1);
+            Drive(0.3, 0.3);
+        }
+        JewelLeft.setPosition(0.5);
+        Wait(0.5);
     }
 
     //////////////////////////////////////////////////////////////////////////////////////
@@ -229,29 +247,29 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     //////////////////////////////////////////////////////////////////////////////////////
 
     // gets the color of the jewels from the right color sensor
-    //public JewelColor getJewelColorRight() {
-     //   if(RightColor.red() > RightColor.blue()){
-       //     return JewelColor.RED;
-       // } else if (RightColor.blue() > RightColor.red()) {
-      //      return JewelColor.BLUE;
-      //  }
+    public JewelColor getJewelColorRight() {
+        if(RightColor.red() > RightColor.blue()){
+            return JewelColor.RED;
+        } else if (RightColor.blue() > RightColor.red()) {
+            return JewelColor.BLUE;
+        }
 
-      //  return null;
-   // }
+        return null;
+    }
 
 
 
 
     // gets the color of the jewels from the left Color sensor
-    //public JewelColor getJewelColorLeft () {
-      //  if(LeftColor.red() > LeftColor.blue()) {
-        //    return JewelColor.RED;
-      //  } else if (LeftColor.blue() > LeftColor.red()){
-      //      return JewelColor.BLUE;
-        //}
+    public JewelColor getJewelColorLeft () {
+       if(LeftColor.red() > LeftColor.blue()) {
+            return JewelColor.RED;
+        } else if (LeftColor.blue() > LeftColor.red()){
+            return JewelColor.BLUE;
+        }
 
-       // return null;
-   // }
+        return null;
+    }
 
 
     //gets the absolute value of the right encoder value

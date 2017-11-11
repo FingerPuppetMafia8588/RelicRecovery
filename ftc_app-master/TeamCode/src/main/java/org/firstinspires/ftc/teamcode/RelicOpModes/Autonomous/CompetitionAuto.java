@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
@@ -20,6 +21,8 @@ public void runOpMode() throws InterruptedException {
 
     //initialize the robot hardware
     initRobot(RobotRunType.AUTONOMOUS);
+
+    GlyphArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
     //intializes Vuforia
     int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
@@ -92,7 +95,10 @@ public void runOpMode() throws InterruptedException {
     waitForStart();
     Grab();
     Wait(1);
-    raiseArm();
+    //raiseArm();
+    GlyphArm.setPower(0.3);
+    Wait(0.6);
+    GlyphArm.setPower(0);
 
     //prepare vuforia
     relicTrackables.activate();
@@ -123,11 +129,11 @@ public void runOpMode() throws InterruptedException {
     }
 
 
-    if (isblue) {
-        keepBlueJewel();
-    } else {
-        keepRedJewel();
-    }
+    //if (isblue) {
+      //  keepBlueJewel();
+    //} else {
+      //  keepRedJewel();
+    //}
 
     //drive off of balance stone
     Drive(0.4, 20);
@@ -175,7 +181,7 @@ public void runOpMode() throws InterruptedException {
         }
 
         //turn 90 degrees to the right
-        TurnHeading(0.4, -90);
+        TurnHeading(-0.4, -90);
         //drive into glyph storage
         Drive(0.4, 8);
         //release glyph
@@ -191,6 +197,9 @@ public void runOpMode() throws InterruptedException {
     }
 
     //lower arm to home position for start of teleop
-    lowerArm();
+    //lowerArm();
+    GlyphArm.setPower(-0.6);
+    Wait(0.5);
+    GlyphArm.setPower(0);
 }
 }

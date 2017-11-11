@@ -135,13 +135,21 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         //move at full speed unitl within 5 degrees
         while(Math.abs(zValue - target) > 5 && opModeIsActive()) {
 
-            if (zValue > target) {  //if gyro is positive, we will turn right
-                SetDrivePower(-power, -power, power, power);
+            if (target>0) {
+                if (zValue > target) {  //if gyro is positive, we will turn right
+                    SetDrivePower(-power, -power, power, power);
+                }
+                if (zValue < target) {
+                    SetDrivePower(power, power, -power, -power);
+                }
+            } else if (target < 0) {
+                if (zValue > target) {  //if gyro is positive, we will turn right
+                    SetDrivePower(power, power, -power, -power);
+                }
+                if (zValue < target) {
+                    SetDrivePower(-power, -power, power, power);
+                }
             }
-            if (zValue < target) {
-                SetDrivePower(power, power, -power, -power);
-            }
-
             printGyroHeading();
             zValue = imu.getIntegratedZValue();
 
@@ -190,10 +198,10 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
     //move hugger arms to open position
     protected void Release() {
-        HuggerRight.setPosition(1);
-        HuggerRightBottom.setPosition(1);
-        HuggerLeft.setPosition(0);
-        HuggerLeftBottom.setPosition(0);
+        HuggerRight.setPosition(0.9);
+        HuggerRightBottom.setPosition(0.9);
+        HuggerLeft.setPosition(0.1);
+        HuggerLeftBottom.setPosition(0.1);
     }
 
     //raise hugger to allow movement
@@ -224,21 +232,23 @@ public abstract class RelicAutonomousBase extends RelicHardware {
             quickReverse(0.3, 1);
             Drive(0.3, 0.3);
         }
-        JewelRight.setPosition(0.5);
+        JewelRight.setPosition(0.4);
         Wait(0.5);
     }
 
     //autonomous function for jewels when on blue team
-    protected void keepBlueJewel() {
+   protected void keepBlueJewel() {
         JewelLeft.setPosition(0);
         Wait(1);
-        if (getJewelColorLeft() == JewelColor.BLUE) {
-            Drive(0.3, 3);
-        } else {
-            quickReverse(0.3, 1);
-            Drive(0.3, 0.3);
+        if (getJewelColorLeft() == JewelColor.BLUE ){
+
+            TurnHeading(-0.3, -20);
+            TurnHeading(0.25, -1);
+       } else {
+            TurnHeading(0.3, 20);
+            TurnHeading(-0.25, -1 );
         }
-        JewelLeft.setPosition(0.5);
+        JewelLeft.setPosition(0.6);
         Wait(0.5);
     }
 

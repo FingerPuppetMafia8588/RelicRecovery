@@ -121,8 +121,8 @@ public abstract class RelicHardware extends RelicRobot {
         HuggerRightBottom.setPosition(1);
         HuggerLeftBottom.setPosition(0.01);
 
-        JewelRight.setPosition(0.5);
-        JewelLeft.setPosition(0.5);
+        JewelRight.setPosition(0.6);
+        JewelLeft.setPosition(0.4);
 
         // sets up parameters for integrated imu
         boolean lastResetState = false;

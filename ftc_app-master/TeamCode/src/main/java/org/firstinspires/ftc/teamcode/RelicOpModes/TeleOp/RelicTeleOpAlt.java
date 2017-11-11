@@ -145,7 +145,7 @@ public class RelicTeleOpAlt extends RelicHardware {
                 HuggerRight.setPosition(0.85);
                 HuggerRightBottom.setPosition(0.85);
                 HuggerLeft.setPosition(0.15);
-                HuggerLeft.setPosition(0.15);
+                HuggerLeftBottom.setPosition(0.15);
             }
 
             if (gamepad1.dpad_up) {
@@ -172,10 +172,10 @@ public class RelicTeleOpAlt extends RelicHardware {
                 GlyphArm.setTargetPosition(3000);
             }
 
-            if(GlyphArm.getCurrentPosition() < GlyphArm.getTargetPosition()) {
+            if(Math.abs(GlyphArm.getCurrentPosition() - GlyphArm.getTargetPosition()) > 3 && GlyphArm.getCurrentPosition() < GlyphArm.getTargetPosition()) {
                 GlyphArm.setPower(0.4);
-            } else if (GlyphArm.getCurrentPosition() > GlyphArm.getTargetPosition()) {
-                GlyphArm.setPower(-0.15);
+            } else if (Math.abs(GlyphArm.getCurrentPosition() - GlyphArm.getTargetPosition()) > 3 && GlyphArm.getCurrentPosition() > GlyphArm.getTargetPosition()) {
+                GlyphArm.setPower(-0.3);
             } else {
                 GlyphArm.setPower(0);
             }

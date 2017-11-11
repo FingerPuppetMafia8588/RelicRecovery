@@ -181,7 +181,7 @@ public void runOpMode() throws InterruptedException {
         }
 
         //turn 90 degrees to the right
-        TurnHeading(-0.4, -90);
+        TurnHeading(0.4, -90);
         //drive into glyph storage
         Drive(0.4, 8);
         //release glyph

@@ -219,7 +219,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     //raise hugger to allow movement
     protected void raiseArm() {
         GlyphArm.setTargetPosition(500);
-        while (GlyphArm.getCurrentPosition() < GlyphArm.getTargetPosition()) {
+        while (GlyphArm.getCurrentPosition() < GlyphArm.getTargetPosition() && opModeIsActive()) {
             GlyphArm.setPower(0.4);
         }
         GlyphArm.setPower(0);
@@ -228,7 +228,7 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     // lower arm to prep for teleop
     protected void lowerArm() {
         GlyphArm.setTargetPosition(0);
-        while (GlyphArm.getCurrentPosition() > GlyphArm.getTargetPosition()) {
+        while (GlyphArm.getCurrentPosition() > GlyphArm.getTargetPosition() && opModeIsActive()) {
             GlyphArm.setPower(-0.15);
         }
         GlyphArm.setPower(0);

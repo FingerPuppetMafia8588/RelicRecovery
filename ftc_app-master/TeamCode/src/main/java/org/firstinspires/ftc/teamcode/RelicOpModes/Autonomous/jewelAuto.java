@@ -50,7 +50,7 @@ public class jewelAuto extends RelicAutonomousBase {
         telemetry.addLine("Press X for blue team or press B for red team");
         telemetry.update();
 
-        while(!teampicked){
+        while(!teampicked && opModeIsActive()){
             if (gamepad2.x){
                 telemetry.addData("Team", "Blue");
 
@@ -69,7 +69,7 @@ public class jewelAuto extends RelicAutonomousBase {
         telemetry.addLine("press A for front balance stone or Y for back stone");
         telemetry.update();
 
-        while(!balancepicked){
+        while(!balancepicked && opModeIsActive()){
             if (gamepad2.a) {
                 telemetry.addData("Balance", "Front");
                 telemetry.update();
@@ -107,12 +107,12 @@ public class jewelAuto extends RelicAutonomousBase {
         int key = 0;
 
         //wait for a vumark to be identified
-        while(VuMark == RelicRecoveryVuMark.UNKNOWN) {
+        while(VuMark == RelicRecoveryVuMark.UNKNOWN && opModeIsActive()) {
             VuMark = RelicRecoveryVuMark.from(relicTemplate);
         }
 
         //store the results in the key enum
-        while( key == 0) {
+        while( key == 0 && opModeIsActive()) {
             if (VuMark == RelicRecoveryVuMark.RIGHT) {
                 key = 1;
             } else if (VuMark == RelicRecoveryVuMark.CENTER) {

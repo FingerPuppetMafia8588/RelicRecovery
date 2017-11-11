@@ -17,6 +17,7 @@ import org.firstinspires.ftc.teamcode.enums.JewelColor;
 import org.firstinspires.ftc.teamcode.enums.TeamColor;
 
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Created by FTC on 10/2/2017.
@@ -170,6 +171,23 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         StopDrive();
     }
 
+    public void turnRight(double power, double target) {
+        SetDrivePower(-power, -power, power, power);
+        while(opModeIsActive() && imu.getIntegratedZValue() > target) {
+            printGyroHeading();
+        }
+        StopDrive();
+    }
+
+    public void turnLeft(double power, double target) {
+        SetDrivePower(power, power, -power, -power);
+        while (opModeIsActive() && imu.getIntegratedZValue() < target) {
+            printGyroHeading();
+        }
+        StopDrive();
+    }
+
+
     public void quickReverse (double power, double time) {
         SetDrivePower(-power, -power, -power, -power);
         Wait(time);
@@ -227,12 +245,16 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         JewelRight.setPosition(1);
         Wait(1);
         if (getJewelColorRight() == JewelColor.RED) {
-            Drive(0.3, 3);
+            turnLeft(0.25, 20);
+            JewelRight.setPosition(0.4);
+            Wait(0.3);
+            turnRight(0.25, 0);
         } else {
-            quickReverse(0.3, 1);
-            Drive(0.3, 0.3);
+            turnRight(0.25, -20);
+            JewelRight.setPosition(0.4);
+            Wait(0.3);
+            turnLeft(0.25, 0);
         }
-        JewelRight.setPosition(0.4);
         Wait(0.5);
     }
 
@@ -242,13 +264,17 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         Wait(1);
         if (getJewelColorLeft() == JewelColor.BLUE ){
 
-            TurnHeading(-0.3, -20);
-            TurnHeading(0.25, -1);
+            turnRight(0.25, -20);
+            JewelLeft.setPosition(0.6);
+            Wait(0.3);
+            turnLeft(0.25, 0);
        } else {
-            TurnHeading(0.3, 20);
-            TurnHeading(-0.25, -1 );
+            turnLeft(0.25, 20);
+            JewelLeft.setPosition(0.6);
+            Wait(0.3);
+            turnRight(0.25, 0);
         }
-        JewelLeft.setPosition(0.6);
+
         Wait(0.5);
     }
 

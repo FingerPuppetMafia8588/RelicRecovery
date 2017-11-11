@@ -158,13 +158,21 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         //slow down to half once within 5 degrees to create more precision
         while (Math.abs( zValue - target) > 1 && opModeIsActive()) {  //Continue while the robot direction is further than three degrees from the target
 
-            if (zValue > target) {  //if gyro is positive, we will turn right
-                SetDrivePower(-power/2, -power/2, power/2, power/2);
+            if(target>0) {
+                if (zValue > target) {  //if gyro is positive, we will turn right
+                    SetDrivePower(-power / 2, -power / 2, power / 2, power / 2);
+                }
+                if (zValue < target) {
+                    SetDrivePower(power / 2, power / 2, -power / 2, -power / 2);
+                }
+            } else {
+                if (zValue > target) {  //if gyro is positive, we will turn right
+                    SetDrivePower(power / 2, power / 2, -power / 2, -power / 2);
+                }
+                if (zValue < target) {
+                    SetDrivePower(-power / 2, -power / 2, power / 2, power / 2);
+                }
             }
-            if (zValue < target) {
-                SetDrivePower(power/2, power/2, -power/2, -power/2);
-            }
-
             printGyroHeading();
             zValue = imu.getIntegratedZValue();
         }

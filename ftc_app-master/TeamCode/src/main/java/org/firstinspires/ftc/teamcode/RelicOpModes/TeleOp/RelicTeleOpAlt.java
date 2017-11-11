@@ -180,6 +180,10 @@ public class RelicTeleOpAlt extends RelicHardware {
                 GlyphArm.setPower(0);
             }
 
+            //keep jewel arms in place
+            JewelLeft.setPosition(0.6);
+            JewelRight.setPosition(0.4);
+
 
             ///////////////////////////////////////////////////////////////////
             ////////////////////Telemetry//////////////////////////////////////

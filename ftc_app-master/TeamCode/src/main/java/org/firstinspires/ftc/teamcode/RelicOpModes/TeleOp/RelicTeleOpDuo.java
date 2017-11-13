@@ -102,13 +102,70 @@ public class RelicTeleOpDuo extends RelicHardware {
                 SetDrivePower(RightFrontPowerVar/3, RightBackPowerVar/3, LeftFrontPowerVar/3, LeftBackPowerVar/3);
             }
 
+            //keep jewel arms in place
+            JewelLeft.setPosition(0.6);
+            JewelRight.setPosition(0.4);
+
+            //check for controller two input
+            controller2();
+
+            ///////////////////////////////////////////////////////////////////
+            ////////////////////Telemetry//////////////////////////////////////
+            ///////////////////////////////////////////////////////////////////
+
+            //Show the elapsed game time
+            telemetry.addData("Status", "Run Time: " + runtime.toString());
+
+            //Shows the Motor Values for the DriveTrain
+            telemetry.addData("Front Motors", "left (%.2f), right (%.2f)", LeftFrontPowerVar, RightFrontPowerVar);
+            telemetry.addData("Back Motors", "left (%.2f), right (%.2f)", LeftBackPowerVar, RightBackPowerVar);
+
+            //shows where the glyph arm is
+            telemetry.addData("ArmPosValue", GlyphArm.getCurrentPosition());
+            telemetry.addData("ArmPosition", ArmPos);
+
+            //shows the current position of the hugger servos
+            telemetry.addData("Right Hugger", HuggerRight.getPosition());
+            telemetry.addData("Left Hugger", HuggerLeft.getPosition());
+
+            telemetry.addData("heading", imu.getIntegratedZValue());
+
+            telemetry.update();
 
         }
+        stop();
 
     }
 
     public void controller2 () {
-        
+
+        double glyph;
+
+        //prevent the hugger from running itself off of its guides.
+        if (GlyphArm.getCurrentPosition() > 3050) {
+            glyph = -0.1;
+        } else {
+            glyph = gamepad2.left_stick_y;
+        }
+
+        //use the left joystick to raise and lower the arm
+        GlyphArm.setPower(glyph);
+
+        //if a is pressed, grab with the hugger
+        if(gamepad1.a) {
+            HuggerLeft.setPosition(0.33);
+            HuggerLeftBottom.setPosition(0.33);
+            HuggerRight.setPosition(0.67);
+            HuggerRightBottom.setPosition(0.67);
+        }
+        //if b is pressed, partially open
+        if (gamepad1.b) {
+            HuggerLeft.setPosition(0.85);
+            HuggerLeftBottom.setPosition(0.85);
+            HuggerRight.setPosition(0.15);
+            HuggerRightBottom.setPosition(0.15);
+        }
+
     }
 
 }

@@ -202,10 +202,10 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
     //move hugger arms to grabbing position
     protected void Grab() {
-        HuggerRight.setPosition(0.73);
-        HuggerRightBottom.setPosition(0.73);
-        HuggerLeft.setPosition(0.27);
-        HuggerLeftBottom.setPosition(0.27);
+        HuggerRight.setPosition(0.67);
+        HuggerRightBottom.setPosition(0.67);
+        HuggerLeft.setPosition(0.33);
+        HuggerLeftBottom.setPosition(0.33);
     }
 
     //move hugger arms to open position

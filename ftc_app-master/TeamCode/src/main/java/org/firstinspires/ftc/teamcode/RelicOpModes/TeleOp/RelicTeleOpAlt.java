@@ -134,10 +134,10 @@ public class RelicTeleOpAlt extends RelicHardware {
 
             //if right bumper is pressed then grab with hugger
             if(gamepad1.right_bumper) {
-                HuggerRight.setPosition(0.70);
-                HuggerLeft.setPosition(0.3);
-                HuggerRightBottom.setPosition(0.70);
-                HuggerLeftBottom.setPosition(0.3);
+                HuggerRight.setPosition(0.67);
+                HuggerLeft.setPosition(0.33);
+                HuggerRightBottom.setPosition(0.67);
+                HuggerLeftBottom.setPosition(0.33);
             }
 
             //if left bumper is pressed then release with hugger
@@ -210,5 +210,6 @@ public class RelicTeleOpAlt extends RelicHardware {
 
             idle();
         }
+        stop();
     }
 }

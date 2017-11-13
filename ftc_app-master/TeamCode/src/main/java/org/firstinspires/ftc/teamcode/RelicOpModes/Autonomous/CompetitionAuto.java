@@ -50,7 +50,7 @@ public void runOpMode() throws InterruptedException {
     telemetry.addLine("Press X for blue team or press B for red team");
     telemetry.update();
 
-    while(!teampicked && opModeIsActive()){
+    while(!teampicked ){
         if (gamepad2.x){
             telemetry.addData("Team", "Blue");
 
@@ -69,7 +69,7 @@ public void runOpMode() throws InterruptedException {
     telemetry.addLine("press A for front balance stone or Y for back stone");
     telemetry.update();
 
-    while(!balancepicked && opModeIsActive()){
+    while(!balancepicked){
         if (gamepad2.a) {
             telemetry.addData("Balance", "Front");
             telemetry.update();
@@ -136,7 +136,7 @@ public void runOpMode() throws InterruptedException {
     //}
 
     //drive off of balance stone
-    Drive(0.4, 20);
+    Drive(0.4, 22);
     //reverse to line up with balance stone's edge
     quickReverse(0.25, 0.35);
 
@@ -161,6 +161,8 @@ public void runOpMode() throws InterruptedException {
         Release();
         // pull out to stop contact with glyph
         quickReverse(0.4, 0.5);
+        Drive(0.4, 12);
+        quickReverse(0.4, 0.3);
 
 
     } else if (isblue && !isfront){
@@ -172,12 +174,12 @@ public void runOpMode() throws InterruptedException {
 
         //make decision on how far to go based on vumark
         if (key == 1) {
-            Drive(0.3,22);
+            Drive(0.3,8.5);
         } else if (key == 2) {
             Drive(0.3, 15);
 
         } else if (key == 3){
-            Drive(0.3, 8);
+            Drive(0.3, 21.6);
         }
 
         //turn 90 degrees to the right
@@ -188,6 +190,8 @@ public void runOpMode() throws InterruptedException {
         Release();
         //pull out to stop contact with glyph
         quickReverse(0.4, 0.5);
+        Drive(0.4, 12);
+        quickReverse(0.4, 0.3);
 
 
     } else {
@@ -201,5 +205,6 @@ public void runOpMode() throws InterruptedException {
     GlyphArm.setPower(-0.6);
     Wait(0.5);
     GlyphArm.setPower(0);
+    stop();
 }
 }

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.TeleOp;
 
 import com.qualcomm.hardware.ams.AMSColorSensor;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by isaac.blandin on 11/13/17.
  */
 
+@TeleOp(name = "Comp Duo", group = "RelicRecovery")
 public class RelicTeleOpDuo extends RelicHardware {
 
     public void runOpMode() {

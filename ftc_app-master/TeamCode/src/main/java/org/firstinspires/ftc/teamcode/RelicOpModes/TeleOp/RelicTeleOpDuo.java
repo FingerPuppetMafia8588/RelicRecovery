@@ -142,7 +142,7 @@ public class RelicTeleOpDuo extends RelicHardware {
     public void controller2 () {
 
         double glyph;
-        
+
         //prevent the hugger from running itself off of its guides.
         if (GlyphArm.getCurrentPosition() > 3050) {
             glyph = -0.1;

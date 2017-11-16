@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.RelicOpModes.Autonomous;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.RelicRecoveryVuMark;
@@ -23,6 +24,8 @@ public void runOpMode() throws InterruptedException {
     initRobot(RobotRunType.AUTONOMOUS);
 
     GlyphArm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+    ElapsedTime runtime = new ElapsedTime();
 
     //intializes Vuforia
     int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
@@ -99,6 +102,7 @@ public void runOpMode() throws InterruptedException {
     GlyphArm.setPower(0.3);
     Wait(0.6);
     GlyphArm.setPower(0);
+    runtime.reset();
 
     //prepare vuforia
     relicTrackables.activate();
@@ -107,12 +111,12 @@ public void runOpMode() throws InterruptedException {
     int key = 0;
 
     //wait for a vumark to be identified
-    while(VuMark == RelicRecoveryVuMark.UNKNOWN && opModeIsActive()) {
+    while(VuMark == RelicRecoveryVuMark.UNKNOWN && opModeIsActive() && runtime.seconds() < 5) {
         VuMark = RelicRecoveryVuMark.from(relicTemplate);
     }
 
     //store the results in the key enum
-    while( key == 0 && opModeIsActive()) {
+    while( key == 0 && opModeIsActive() && runtime.seconds() < 6) {
         if (VuMark == RelicRecoveryVuMark.RIGHT) {
             key = 1;
         } else if (VuMark == RelicRecoveryVuMark.CENTER) {
@@ -146,7 +150,7 @@ public void runOpMode() throws InterruptedException {
         // make decision on how far to go forward based on vumark
         if (key == 1) {
             Drive(0.3,22);
-        } else if (key == 2) {
+        } else if (key == 2 || key == 0) {
             Drive(0.3, 15);
 
         } else if (key == 3){
@@ -175,7 +179,7 @@ public void runOpMode() throws InterruptedException {
         //make decision on how far to go based on vumark
         if (key == 1) {
             Drive(0.3,8.5);
-        } else if (key == 2) {
+        } else if (key == 2 || key == 0) {
             Drive(0.3, 15);
 
         } else if (key == 3){

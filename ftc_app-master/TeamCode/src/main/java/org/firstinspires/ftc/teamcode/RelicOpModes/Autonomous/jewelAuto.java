@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
 /**
  * Created by FTC on 11/10/2017.
  */
-@Autonomous(name = "jewelAuto")
+@Autonomous(name = "jewelAuto", group = "RelicRecovery")
 public class jewelAuto extends RelicAutonomousBase {
 
     public void runOpMode() throws InterruptedException {

@@ -147,25 +147,25 @@ public class RelicTeleOpDuo extends RelicHardware {
         if (GlyphArm.getCurrentPosition() > 3050) {
             glyph = -0.1;
         } else {
-            glyph = gamepad2.left_stick_y;
+            glyph = -gamepad2.left_stick_y;
         }
 
         //use the left joystick to raise and lower the arm
         GlyphArm.setPower(glyph);
 
         //if a is pressed, grab with the hugger
-        if(gamepad1.a) {
+        if(gamepad2.a) {
             HuggerLeft.setPosition(0.33);
             HuggerLeftBottom.setPosition(0.33);
             HuggerRight.setPosition(0.67);
             HuggerRightBottom.setPosition(0.67);
         }
         //if b is pressed, partially open
-        if (gamepad1.b) {
-            HuggerLeft.setPosition(0.85);
-            HuggerLeftBottom.setPosition(0.85);
-            HuggerRight.setPosition(0.15);
-            HuggerRightBottom.setPosition(0.15);
+        if (gamepad2.b) {
+            HuggerLeft.setPosition(0.15);
+            HuggerLeftBottom.setPosition(0.15);
+            HuggerRight.setPosition(0.85);
+            HuggerRightBottom.setPosition(0.85);
         }
 
     }

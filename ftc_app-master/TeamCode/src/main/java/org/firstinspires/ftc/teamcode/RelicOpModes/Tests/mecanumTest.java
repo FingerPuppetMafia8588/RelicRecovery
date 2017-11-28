@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.Range;
 
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by isaac.blandin on 11/17/17.
  */
 
+@Disabled
 @TeleOp(name = "Mecanum Test", group = "tests")
 public class mecanumTest extends RelicHardware {
 

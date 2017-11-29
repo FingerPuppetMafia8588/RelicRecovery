@@ -24,5 +24,6 @@ public class JewelTest extends RelicAutonomousBase {
         }
 
         keepBlueJewel();
+        stop();
     }
 }

@@ -50,5 +50,6 @@ public class armsDown extends RelicHardware {
             telemetry.addData("Left", JewelLeft.getPosition());
             telemetry.update();
         }
+        stop();
     }
 }

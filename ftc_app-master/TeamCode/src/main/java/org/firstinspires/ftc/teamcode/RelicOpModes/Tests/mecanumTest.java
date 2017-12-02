@@ -27,6 +27,7 @@ public class mecanumTest extends RelicHardware {
             double x1;
             double y1;
             double x2;
+            double max;
 
             x1 = gamepad1.left_stick_x;
             y1 = -gamepad1.left_stick_y;
@@ -57,11 +58,21 @@ public class mecanumTest extends RelicHardware {
             RightBackPowerVar -= x2;
 
             //limit the motor values to the acceptable range by motor
-            if (LeftFrontPowerVar > 1|| LeftFrontPowerVar < -1 || RightFrontPowerVar > 1 || RightFrontPowerVar < -1 || LeftBackPowerVar > 1 || LeftBackPowerVar < -1 || RightBackPowerVar > 1 || RightBackPowerVar < -1) {
-                LeftFrontPowerVar = Range.clip(LeftFrontPowerVar, -1, 1);
-                LeftBackPowerVar = Range.clip(LeftBackPowerVar, -1, 1);
-                RightFrontPowerVar = Range.clip(RightFrontPowerVar, -1, 1);
-                RightBackPowerVar = Range.clip(RightBackPowerVar, -1, 1);
+            max = Math.abs(LeftFrontPowerVar);
+            if (Math.abs(RightFrontPowerVar)>max){
+                max = Math.abs(RightFrontPowerVar);
+            }
+            if (Math.abs(LeftBackPowerVar)>max){
+                max = Math.abs(LeftBackPowerVar);
+            }
+            if (Math.abs(RightBackPowerVar)>max){
+                max = Math.abs(RightBackPowerVar);
+            }
+            if (max > 1) {
+                LeftFrontPowerVar/=max;
+                RightFrontPowerVar/=max;
+                LeftBackPowerVar/=max;
+                RightBackPowerVar/=max;
             }
 
             //set variables to the motor powers

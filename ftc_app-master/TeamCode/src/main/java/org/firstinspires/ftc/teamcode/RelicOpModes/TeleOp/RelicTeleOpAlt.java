@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.TeleOp;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -11,7 +12,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
 /**
  * Created by FTC on 10/2/2017.
  */
-
+@Disabled
 @TeleOp (name = "Comp Uno", group = "RelicRecovery")
 public class RelicTeleOpAlt extends RelicHardware {
 

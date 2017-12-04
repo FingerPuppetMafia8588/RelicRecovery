@@ -146,7 +146,9 @@ public class RelicTeleOpDuo extends RelicHardware {
         //prevent the hugger from running itself off of its guides.
         if (GlyphArm.getCurrentPosition() > 3050) {
             glyph = -0.1;
-        } else {
+        } else if (touch.getState() == false){
+            glyph = Math.pow(gamepad2.left_stick_y, 2);
+        }else {
             glyph = -gamepad2.left_stick_y;
         }
 

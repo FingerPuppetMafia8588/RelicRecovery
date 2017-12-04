@@ -5,9 +5,11 @@ import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.hardware.modernrobotics.ModernRoboticsI2cGyro;
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DigitalChannel;
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.IntegratingGyroscope;
 import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.TouchSensor;
 import com.qualcomm.robotcore.util.ReadWriteFile;
 
 import org.firstinspires.ftc.robotcore.external.matrices.OpenGLMatrix;
@@ -64,6 +66,8 @@ public abstract class RelicHardware extends RelicRobot {
     protected ColorSensor LeftColor;
   //  protected DistanceSensor LeftDistance;
 
+    protected DigitalChannel touch;
+
     //start Vuforia
     protected OpenGLMatrix lastLocation = null;
     protected VuforiaLocalizer vuforia;
@@ -111,6 +115,8 @@ public abstract class RelicHardware extends RelicRobot {
         RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
         LeftColor = hardwareMap.get(ColorSensor.class, "ColorL");
 
+        touch = hardwareMap.get(DigitalChannel.class, "touch");
+        touch.setMode(DigitalChannel.Mode.INPUT);
 
        // RightDistance = hardwareMap.get(DistanceSensor.class, "ColorR");
        // LeftDistance = hardwareMap.get(DistanceSensor.class, "ColorL");

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Tests;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.RelicRecoveryRobotBase.RelicAutonomousBase;
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by isaac.blandin on 12/2/17.
  */
 
+@Disabled
 @TeleOp(name = "Field Centric")
 public class FieldCentric extends RelicHardware {
 

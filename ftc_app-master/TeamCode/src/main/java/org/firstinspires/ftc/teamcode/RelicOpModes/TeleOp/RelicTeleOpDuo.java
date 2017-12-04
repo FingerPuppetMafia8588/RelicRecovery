@@ -42,6 +42,8 @@ public class RelicTeleOpDuo extends RelicHardware {
             double y1;
             double x2;
 
+            double max;
+
             x1 = gamepad1.left_stick_x;
             y1 = -gamepad1.left_stick_y;
             x2 = gamepad1.right_stick_x;
@@ -70,38 +72,29 @@ public class RelicTeleOpDuo extends RelicHardware {
             RightFrontPowerVar -= x2;
             RightBackPowerVar -= x2;
 
-            // Scale the movement variables so they no not exceed the range of -1 to 1
-            double max = Math.max(Math.abs(LeftFrontPowerVar), Math.max(Math.abs(LeftBackPowerVar),
-                    Math.max(Math.abs(RightFrontPowerVar), Math.abs(RightBackPowerVar))));
+            //limit the motor values to the acceptable range by motor
+            max = Math.abs(LeftFrontPowerVar);
+            if (Math.abs(RightFrontPowerVar)>max){
+                max = Math.abs(RightFrontPowerVar);
+            }
+            if (Math.abs(LeftBackPowerVar)>max){
+                max = Math.abs(LeftBackPowerVar);
+            }
+            if (Math.abs(RightBackPowerVar)>max){
+                max = Math.abs(RightBackPowerVar);
+            }
             if (max > 1) {
-                LeftFrontPowerVar = (float) Range.scale(LeftFrontPowerVar, -max, max, -1, 1);
-                LeftBackPowerVar = (float)Range.scale(LeftBackPowerVar, -max, max, -1, 1);
-                RightFrontPowerVar = (float)Range.scale(RightFrontPowerVar, -max, max, -1, 1);
-                RightBackPowerVar = (float)Range.scale(RightBackPowerVar, -max, max, -1, 1);
+                LeftFrontPowerVar/=max;
+                RightFrontPowerVar/=max;
+                LeftBackPowerVar/=max;
+                RightBackPowerVar/=max;
             }
-
-            //adds a speed shifting button to toggle a slow down of the drive
-            if(gamepad1.a) {
-                if (!speedShift) {
-                    speedShift = true;
-                    sleep(30);
-                } else {
-                    speedShift = false;
-                    sleep(30);
-                }
-            }
-
 
             //reduces speed to half if speed shift is on
             if (!speedShift) {
                 SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);
             } else {
                 SetDrivePower(RightFrontPowerVar/2,RightBackPowerVar/2,LeftFrontPowerVar/2,LeftBackPowerVar/2);
-            }
-
-            //reduces speed to one-third power if x is being actively pressed down
-            if (gamepad1.x) {
-                SetDrivePower(RightFrontPowerVar/3, RightBackPowerVar/3, LeftFrontPowerVar/3, LeftBackPowerVar/3);
             }
 
             //keep jewel arms in place

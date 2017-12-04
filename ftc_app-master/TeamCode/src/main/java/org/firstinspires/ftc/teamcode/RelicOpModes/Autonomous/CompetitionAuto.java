@@ -207,7 +207,7 @@ public void runOpMode() throws InterruptedException {
     //lower arm to home position for start of teleop
     //lowerArm();
     GlyphArm.setPower(-0.6);
-    Wait(0.5);
+    Wait(0.27);
     GlyphArm.setPower(0);
     stop();
 }

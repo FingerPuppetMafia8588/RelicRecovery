@@ -99,7 +99,7 @@ public class RelicTeleOpDuo extends RelicHardware {
 
             //keep jewel arms in place
             JewelLeft.setPosition(0.6);
-            JewelRight.setPosition(0.4);
+            JewelRight.setPosition(0.65);
 
             //check for controller two input
             controller2();

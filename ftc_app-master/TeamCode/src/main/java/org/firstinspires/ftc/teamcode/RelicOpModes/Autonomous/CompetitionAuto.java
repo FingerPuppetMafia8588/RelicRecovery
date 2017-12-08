@@ -172,6 +172,26 @@ public void runOpMode() throws InterruptedException {
     } else if (isblue && !isfront){
         //this code runs if the robot is on the back blue balance stone
 
+        Drive(0.4, 5);
+        TurnHeading(0.2, -90);
+        quickReverse(0.4, 0.9);
+        //make decision on how far to go based on vumark
+        if (key == 1) {
+            Drive(0.3,32.5);
+        } else if (key == 2 || key == 0) {
+            Drive(0.3, 25);
+
+        } else if (key == 3){
+            Drive(0.3, 17.5);
+        }
+        TurnHeading(0.3, 0);
+        Drive(0.4, 8);
+        //release glyph
+        Release();
+        //pull out to stop contact with glyph
+        quickReverse(0.4, 0.5);
+        Drive(0.4, 12);
+        quickReverse(0.4, 0.3);
 
     } else if (!isblue && isfront) {
         //this code runs if the robot is on the front red balance stone
@@ -200,6 +220,27 @@ public void runOpMode() throws InterruptedException {
 
     } else {
         //this code runs if the robot is on the back red balance stone
+
+        Drive(0.4, 5);
+        TurnHeading(0.2, 90);
+        quickReverse(0.4, 0.9);
+        //make decision on how far to go based on vumark
+        if (key == 1) {
+            Drive(0.3,17.5);
+        } else if (key == 2 || key == 0) {
+            Drive(0.3, 25);
+
+        } else if (key == 3){
+            Drive(0.3, 34);
+        }
+        TurnHeading(0.3, 0);
+        Drive(0.4, 8);
+        //release glyph
+        Release();
+        //pull out to stop contact with glyph
+        quickReverse(0.4, 0.5);
+        Drive(0.4, 12);
+        quickReverse(0.4, 0.3);
 
 
     }

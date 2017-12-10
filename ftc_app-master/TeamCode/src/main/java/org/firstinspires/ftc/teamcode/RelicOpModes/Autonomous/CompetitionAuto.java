@@ -115,7 +115,7 @@ public void runOpMode() throws InterruptedException {
         VuMark = RelicRecoveryVuMark.from(relicTemplate);
     }
 
-    //store the results in the key enum
+    //store the results in the key variable
     while( key == 0 && opModeIsActive() && runtime.seconds() < 6) {
         if (VuMark == RelicRecoveryVuMark.RIGHT) {
             key = 1;

@@ -89,7 +89,7 @@ public class RelicTeleOpDuo extends RelicHardware {
                 LeftBackPowerVar/=max;
                 RightBackPowerVar/=max;
             }
-            
+
             //reduces speed to half if speed shift is on
             if (!speedShift) {
                 SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);

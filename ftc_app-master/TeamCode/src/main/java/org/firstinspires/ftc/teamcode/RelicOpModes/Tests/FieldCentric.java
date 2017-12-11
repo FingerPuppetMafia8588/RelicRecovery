@@ -58,6 +58,9 @@ public class FieldCentric extends RelicHardware {
             rearRight = 0;
             rearLeft = 0;
 
+            //reduce turning sensitivity
+            clockwise = clockwise*0.7;
+
             //field centric conversion
             temp = forward*Math.cos(theta) - right*Math.sin(theta);
             right = forward*Math.sin(theta) + right*Math.cos(theta);

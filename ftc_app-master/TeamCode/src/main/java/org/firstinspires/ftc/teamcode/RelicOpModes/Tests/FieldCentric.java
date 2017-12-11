@@ -50,7 +50,7 @@ public class FieldCentric extends RelicHardware {
             right = gamepad1.left_stick_x;
             clockwise = gamepad1.right_stick_x;
 
-            theta = imu.getIntegratedZValue();
+            theta = imu.getIntegratedZValue()/180*Math.PI;
 
             //reset variables
             frontRight = 0;

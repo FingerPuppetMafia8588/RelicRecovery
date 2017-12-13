@@ -110,6 +110,7 @@ public class FieldCentric extends RelicHardware {
             telemetry.addData("Front Left", LeftFront.getPower());
             telemetry.addData("Rear Right", RightBack.getPower());
             telemetry.addData("Rear Left", LeftBack.getPower());
+            telemetry.addData("theta", theta);
 
             telemetry.update();
         }

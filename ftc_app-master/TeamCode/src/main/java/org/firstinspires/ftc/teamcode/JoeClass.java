@@ -29,7 +29,7 @@ public class JoeClass extends LinearOpMode {
         double steering;
         double rightPower;
         double leftPower;
-        
+
         waitForStart();
         while (opModeIsActive()){
 

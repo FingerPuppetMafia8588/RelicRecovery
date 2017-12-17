@@ -54,12 +54,12 @@ public void runOpMode() throws InterruptedException {
     telemetry.update();
 
     while(!teampicked ){
-        if (gamepad2.x){
+        if (gamepad1.x){
             telemetry.addData("Team", "Blue");
 
             teampicked = true;
             isblue = true;
-        } else if (gamepad2.b) {
+        } else if (gamepad1.b) {
             telemetry.addData("Team", "Red");
 
             teampicked = true;
@@ -73,13 +73,13 @@ public void runOpMode() throws InterruptedException {
     telemetry.update();
 
     while(!balancepicked){
-        if (gamepad2.a) {
+        if (gamepad1.a) {
             telemetry.addData("Balance", "Front");
             telemetry.update();
 
             balancepicked = true;
             isfront = true;
-        } else if (gamepad2.y) {
+        } else if (gamepad1.y) {
             telemetry.addData("Balance", "Back");
             telemetry.update();
 
@@ -174,7 +174,7 @@ public void runOpMode() throws InterruptedException {
 
         Drive(0.4, 5);
         TurnHeading(0.2, -90);
-        quickReverse(0.4, 0.9);
+        quickReverse(0.4, 1.0);
         //make decision on how far to go based on vumark
         if (key == 1) {
             Drive(0.3,32.5);
@@ -223,7 +223,7 @@ public void runOpMode() throws InterruptedException {
 
         Drive(0.4, 5);
         TurnHeading(0.2, 90);
-        quickReverse(0.4, 0.9);
+        quickReverse(0.4, 1.0);
         //make decision on how far to go based on vumark
         if (key == 1) {
             Drive(0.3,17.5);

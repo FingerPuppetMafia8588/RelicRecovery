@@ -113,12 +113,12 @@ public class jewelAuto extends RelicAutonomousBase {
         int key = 0;
 
         //wait for a vumark to be identified
-        while(VuMark == RelicRecoveryVuMark.UNKNOWN && opModeIsActive() && runtime.seconds() < 5) {
+        while(VuMark == RelicRecoveryVuMark.UNKNOWN && opModeIsActive() && runtime.seconds() < 2) {
             VuMark = RelicRecoveryVuMark.from(relicTemplate);
         }
 
         //store the results in the key enum
-        while( key == 0 && opModeIsActive() && runtime.seconds() < 6) {
+        while( key == 0 && opModeIsActive() && runtime.seconds() < 3) {
             if (VuMark == RelicRecoveryVuMark.RIGHT) {
                 key = 1;
             } else if (VuMark == RelicRecoveryVuMark.CENTER) {

@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.RelicOpModes.Tests;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 
 import org.firstinspires.ftc.teamcode.RelicRecoveryRobotBase.RelicAutonomousBase;
 import org.firstinspires.ftc.teamcode.enums.RobotRunType;
@@ -9,6 +10,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by isaac.blandin on 11/17/17.
  */
 
+@Disabled
 @Autonomous(name = "JewelTest", group = "tests")
 public class JewelTest extends RelicAutonomousBase {
 

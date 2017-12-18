@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.enums.RobotRunType;
  * Created by isaac.blandin on 12/2/17.
  */
 
-//@Disabled
+@Disabled
 @TeleOp(name = "Field Centric")
 public class FieldCentric extends RelicHardware {
 

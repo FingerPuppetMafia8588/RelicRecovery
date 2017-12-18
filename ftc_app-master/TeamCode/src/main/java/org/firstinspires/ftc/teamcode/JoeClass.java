@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
  * Created by isaac.blandin on 12/13/17.
@@ -11,6 +13,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 //this opmode is used for driving a 2 motor drive robot with a single joystick
 // rather than the typical 2 joystick tank drive
+    @Disabled
 @TeleOp(name = "Joe Single Joystick")
 public class JoeClass extends LinearOpMode {
 
@@ -23,6 +26,8 @@ public class JoeClass extends LinearOpMode {
         //assign motor names
         left = hardwareMap.dcMotor.get("l");
         right = hardwareMap.dcMotor.get("r");
+
+        right.setDirection(DcMotorSimple.Direction.REVERSE);
 
         //declare variables
         double throttle;

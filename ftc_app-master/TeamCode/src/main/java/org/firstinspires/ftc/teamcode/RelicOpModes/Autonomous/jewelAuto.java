@@ -218,7 +218,7 @@ public class jewelAuto extends RelicAutonomousBase {
             quickReverse(0.4, 0.5);
             Drive(0.4, 12);
             quickReverse(0.4, 0.3);
-            
+
         } else {
             //this code runs if the robot is on the back red balance stone
 

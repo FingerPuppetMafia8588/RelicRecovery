@@ -13,7 +13,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 //this opmode is used for driving a 2 motor drive robot with a single joystick
 // rather than the typical 2 joystick tank drive
-    @Disabled
+@Disabled
 @TeleOp(name = "Joe Single Joystick")
 public class JoeClass extends LinearOpMode {
 

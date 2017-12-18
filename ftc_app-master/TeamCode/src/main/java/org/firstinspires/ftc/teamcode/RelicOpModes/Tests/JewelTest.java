@@ -23,7 +23,7 @@ public class JewelTest extends RelicAutonomousBase {
             //wait to start if gyro is not calibrated
         }
 
-        keepBlueJewel();
+        keepRedJewel();
         stop();
     }
 }

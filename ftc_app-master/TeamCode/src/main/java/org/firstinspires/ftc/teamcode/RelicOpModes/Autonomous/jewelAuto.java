@@ -142,7 +142,7 @@ public class jewelAuto extends RelicAutonomousBase {
         }
 
         //drive off of balance stone
-        Drive(0.4, 20);
+        //Drive(0.4, 20);
         //reverse to line up with balance stone's edge
         quickReverse(0.25, 0.35);
 
@@ -167,23 +167,45 @@ public class jewelAuto extends RelicAutonomousBase {
             Release();
             // pull out to stop contact with glyph
             quickReverse(0.4, 0.5);
+            Drive(0.4, 12);
+            quickReverse(0.4, 0.3);
 
 
         } else if (isblue && !isfront){
             //this code runs if the robot is on the back blue balance stone
 
+            Drive(0.4, 5);
+            TurnHeading(0.2, -90);
+            quickReverse(0.4, 1.0);
+            //make decision on how far to go based on vumark
+            if (key == 1) {
+                Drive(0.3,32.5);
+            } else if (key == 2 || key == 0) {
+                Drive(0.3, 25);
+
+            } else if (key == 3){
+                Drive(0.3, 17.5);
+            }
+            TurnHeading(0.3, 0);
+            Drive(0.4, 8);
+            //release glyph
+            Release();
+            //pull out to stop contact with glyph
+            quickReverse(0.4, 0.5);
+            Drive(0.4, 12);
+            quickReverse(0.4, 0.3);
 
         } else if (!isblue && isfront) {
             //this code runs if the robot is on the front red balance stone
 
             //make decision on how far to go based on vumark
             if (key == 1) {
-                Drive(0.3,22);
+                Drive(0.3,8.5);
             } else if (key == 2 || key == 0) {
                 Drive(0.3, 15);
 
             } else if (key == 3){
-                Drive(0.3, 8);
+                Drive(0.3, 21.6);
             }
 
             //turn 90 degrees to the right
@@ -194,10 +216,33 @@ public class jewelAuto extends RelicAutonomousBase {
             Release();
             //pull out to stop contact with glyph
             quickReverse(0.4, 0.5);
+            Drive(0.4, 12);
+            quickReverse(0.4, 0.3);
 
 
         } else {
             //this code runs if the robot is on the back red balance stone
+
+            Drive(0.4, 5);
+            TurnHeading(0.2, 90);
+            quickReverse(0.4, 1.0);
+            //make decision on how far to go based on vumark
+            if (key == 1) {
+                Drive(0.3,17.5);
+            } else if (key == 2 || key == 0) {
+                Drive(0.3, 25);
+
+            } else if (key == 3){
+                Drive(0.3, 34);
+            }
+            TurnHeading(0.3, 0);
+            Drive(0.4, 8);
+            //release glyph
+            Release();
+            //pull out to stop contact with glyph
+            quickReverse(0.4, 0.5);
+            Drive(0.4, 12);
+            quickReverse(0.4, 0.3);
 
 
         }
@@ -205,7 +250,8 @@ public class jewelAuto extends RelicAutonomousBase {
         //lower arm to home position for start of teleop
         //lowerArm();
         GlyphArm.setPower(-0.6);
-        Wait(0.5);
+        Wait(0.27);
         GlyphArm.setPower(0);
+        stop();
     }
 }

@@ -118,8 +118,8 @@ public abstract class RelicHardware extends RelicRobot {
         touch = hardwareMap.get(DigitalChannel.class, "touch");
         touch.setMode(DigitalChannel.Mode.INPUT);
 
-       // RightDistance = hardwareMap.get(DistanceSensor.class, "ColorR");
-       // LeftDistance = hardwareMap.get(DistanceSensor.class, "ColorL");
+        //RightDistance = hardwareMap.get(DistanceSensor.class, "ColorR");
+        //LeftDistance = hardwareMap.get(DistanceSensor.class, "ColorL");
 
         //sets open hugger positions to fit in starting constraints
         HuggerRight.setPosition(1);
@@ -127,8 +127,8 @@ public abstract class RelicHardware extends RelicRobot {
         HuggerRightBottom.setPosition(1);
         HuggerLeftBottom.setPosition(0.01);
 
-        JewelRight.setPosition(0.65);
-        JewelLeft.setPosition(0.6);
+        JewelRight.setPosition(0.6);
+        JewelLeft.setPosition(0.4);
 
         // sets up parameters for integrated imu
         boolean lastResetState = false;

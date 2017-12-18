@@ -237,18 +237,20 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
     //autonomous function for jewels when on red team
     protected void keepRedJewel() {
-        JewelRight.setPosition(.1);
+        JewelRight.setPosition(.98);
         Wait(1);
         if (getJewelColorRight() == JewelColor.RED) {
-            turnLeft(0.25, 20);
-            JewelRight.setPosition(0.65);
+            Drive(0.3,2);
+            JewelRight.setPosition(0.6);
             Wait(0.3);
-            turnRight(0.25, 0);
+            Drive(0.4, 18);
+
         } else {
-            turnRight(0.25, -20);
-            JewelRight.setPosition(0.65);
+            quickReverse(0.2, 0.6);
+            JewelRight.setPosition(0.6);
             Wait(0.3);
-            turnLeft(0.25, 0);
+            Drive(0.4,26);
+
         }
         Wait(0.5);
     }

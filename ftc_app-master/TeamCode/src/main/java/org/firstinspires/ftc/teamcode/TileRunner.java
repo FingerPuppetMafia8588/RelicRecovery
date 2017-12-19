@@ -11,7 +11,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
  */
 
 @TeleOp (name = "tilerunner", group = "Example")
-@Disabled
+//@Disabled
 public class TileRunner extends OpMode {
 
     //declares motors
@@ -43,7 +43,7 @@ public class TileRunner extends OpMode {
 
     //this code will run continually after start is pressed
     @Override
-    public void loop () {
+        public void loop () {
 
         //sets drives the bot with a basic tank drive control scheme
 
@@ -64,4 +64,5 @@ public class TileRunner extends OpMode {
 
         telemetry.update();
     }
+
 }

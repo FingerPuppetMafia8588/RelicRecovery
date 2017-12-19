@@ -240,16 +240,16 @@ public abstract class RelicAutonomousBase extends RelicHardware {
         JewelRight.setPosition(.98);
         Wait(1);
         if (getJewelColorRight() == JewelColor.RED) {
-            Drive(0.3,2);
+            Drive(0.3,2.75);
             JewelRight.setPosition(0.6);
             Wait(0.3);
-            Drive(0.4, 18);
+            Drive(0.4, 17.3);
 
         } else {
             quickReverse(0.2, 0.6);
             JewelRight.setPosition(0.6);
             Wait(0.3);
-            Drive(0.4,26);
+            Drive(0.4,27.5);
 
         }
         Wait(0.5);
@@ -257,19 +257,19 @@ public abstract class RelicAutonomousBase extends RelicHardware {
 
     //autonomous function for jewels when on blue team
    protected void keepBlueJewel() {
-        JewelLeft.setPosition(0);
+        JewelLeft.setPosition(0.03);
         Wait(1);
         if (getJewelColorLeft() == JewelColor.BLUE ){
 
-            turnRight(0.25, -20);
-            JewelLeft.setPosition(0.6);
+            Drive(0.3,2.75);
+            JewelLeft.setPosition(0.43);
             Wait(0.3);
-            turnLeft(0.25, 0);
+            Drive(0.4, 17.3);
        } else {
-            turnLeft(0.25, 20);
-            JewelLeft.setPosition(0.6);
+            quickReverse(0.2, 0.6);
+            JewelLeft.setPosition(0.43);
             Wait(0.3);
-            turnRight(0.25, 0);
+            Drive(0.4,27.5);
         }
 
         Wait(0.5);

@@ -238,12 +238,17 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     //autonomous function for jewels when on red team
     protected void keepRedJewel() {
         JewelRight.setPosition(0.99);
+        printRightColorTelemetry();
         Wait(1);
         if (getJewelColorRight() == JewelColor.RED) {
             Drive(0.3,2.75);
             JewelRight.setPosition(0.6);
-            Wait(0.3);
-            Drive(0.4, 17.3);
+            telemetry.addData("before wait", "yes");
+            telemetry.update();
+            Wait(0.25);
+            telemetry.addData("after wait", "yes");
+            telemetry.update();
+            Drive(0.38,17.3);
 
         } else {
             quickReverse(0.2, 0.6);
@@ -352,15 +357,15 @@ public abstract class RelicAutonomousBase extends RelicHardware {
     ////////////////////////////////////////////////////////////////////////////////////////
 
     //gives telemetry data on the right color sensor
-    //public void printRightColorTelemetry() {
-       // double r = RightColor.red();
-       // double g = RightColor.green();
-       // double b = RightColor.blue();
-       // String rgb = "" + r + ", " + g + ", " + b;
+    public void printRightColorTelemetry() {
+        double r = RightColor.red();
+        double g = RightColor.green();
+        double b = RightColor.blue();
+        String rgb = "" + r + ", " + g + ", " + b;
 
-       // telemetry.addData("rightRGB",rgb);
-       // telemetry.update();
-  //  }
+        telemetry.addData("rightRGB",rgb);
+        telemetry.update();
+    }
 
     //gives telemetry data on the left color sensor
     //public void printLeftColorTelemetry() {

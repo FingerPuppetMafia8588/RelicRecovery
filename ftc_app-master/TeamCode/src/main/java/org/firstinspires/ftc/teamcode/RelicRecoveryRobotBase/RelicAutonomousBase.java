@@ -245,10 +245,11 @@ public abstract class RelicAutonomousBase extends RelicHardware {
             JewelRight.setPosition(0.6);
             telemetry.addData("before wait", "yes");
             telemetry.update();
-            Wait(0.25);
+            Wait(0.5);
+            ResetEncoders();
             telemetry.addData("after wait", "yes");
             telemetry.update();
-            Drive(0.38,17.3);
+            Drive(0.4,17.3);
 
         } else {
             quickReverse(0.2, 0.6);

@@ -102,6 +102,8 @@ public abstract class RelicHardware extends RelicRobot {
         RelicArmElv = hardwareMap.dcMotor.get("elevation");
         RelicArmExt = hardwareMap.dcMotor.get("extension");
 
+        RelicArmExt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
         //calls for servo names from Robot Controller
         JewelRight = hardwareMap.servo.get("jewelR");
         JewelLeft = hardwareMap.servo.get("jewelL");

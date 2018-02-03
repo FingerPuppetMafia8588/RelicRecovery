@@ -163,9 +163,9 @@ public class RelicTeleOpDuo extends RelicHardware {
             HuggerRightBottom.setPosition(0.85);
         }
 
-        if (RelicArmExt.getCurrentPosition() > 0) {
+
             RelicArmExt.setPower(gamepad2.right_stick_y);
-        }
+        
 
     }
 

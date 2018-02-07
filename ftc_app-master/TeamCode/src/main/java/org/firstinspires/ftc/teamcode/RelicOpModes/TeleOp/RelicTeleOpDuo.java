@@ -26,6 +26,12 @@ public class RelicTeleOpDuo extends RelicHardware {
         //sets the drive speed shifter variable to off by default
         boolean speedShift = false;
 
+        boolean flipped = false;
+
+        double flipOffset = 1;
+
+        boolean grabbing = true;
+
         //all code after this line will not occur until the start button is pressed
         waitForStart();
 
@@ -104,6 +110,49 @@ public class RelicTeleOpDuo extends RelicHardware {
             //check for controller two input
             controller2();
 
+            if (gamepad2.dpad_right) {
+                if (flipOffset >= 0) {
+                    flipOffset -= 0.02;
+                }
+            }
+
+            if (gamepad2.dpad_left) {
+                if (flipOffset <= 1) {
+                    flipOffset += 0.02;
+                }
+            }
+
+            if(gamepad2.dpad_up) {
+                if (!flipped) {
+                    flipped = true;
+                    sleep(50);
+                } else {
+                    flipped = false;
+                    sleep(50);
+                }
+            }
+            if (!flipped){
+                RelicFlipper.setPosition(flipOffset);
+            } else {
+                RelicFlipper.setPosition(0.33);
+            }
+
+            if (gamepad2.dpad_down) {
+                if (grabbing) {
+                    grabbing = false;
+                    sleep(50);
+                } else {
+                    grabbing = true;
+                    sleep(50);
+                }
+            }
+
+            if (grabbing){
+                RelicGrabber.setPosition(0);
+            } else  {
+                RelicGrabber.setPosition(0.6);
+            }
+
             ///////////////////////////////////////////////////////////////////
             ////////////////////Telemetry//////////////////////////////////////
             ///////////////////////////////////////////////////////////////////
@@ -164,8 +213,11 @@ public class RelicTeleOpDuo extends RelicHardware {
         }
 
 
-            RelicArmExt.setPower(gamepad2.right_stick_y);
-        
+            RelicArmExt.setPower(-gamepad2.right_stick_y);
+
+
+
+
 
     }
 

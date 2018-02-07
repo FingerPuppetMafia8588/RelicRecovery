@@ -42,6 +42,9 @@ public abstract class RelicHardware extends RelicRobot {
 
     protected int ArmPos;
 
+    protected Servo RelicGrabber;
+    protected  Servo RelicFlipper;
+
     //declares servos for jewel arms
     protected Servo JewelRight;
     protected Servo JewelLeft;
@@ -104,6 +107,9 @@ public abstract class RelicHardware extends RelicRobot {
 
         RelicArmExt.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        RelicGrabber = hardwareMap.servo.get("grabber");
+        RelicFlipper = hardwareMap.servo.get("flipper");
+
         //calls for servo names from Robot Controller
         JewelRight = hardwareMap.servo.get("jewelR");
         JewelLeft = hardwareMap.servo.get("jewelL");
@@ -131,6 +137,9 @@ public abstract class RelicHardware extends RelicRobot {
 
         JewelRight.setPosition(0.6);
         JewelLeft.setPosition(0.43);
+
+        RelicGrabber.setPosition(0);
+        RelicFlipper.setPosition(1);
 
         // sets up parameters for integrated imu
         boolean lastResetState = false;

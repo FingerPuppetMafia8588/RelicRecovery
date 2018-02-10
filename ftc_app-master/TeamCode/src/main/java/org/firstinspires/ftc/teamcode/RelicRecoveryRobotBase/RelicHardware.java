@@ -75,6 +75,9 @@ public abstract class RelicHardware extends RelicRobot {
     protected OpenGLMatrix lastLocation = null;
     protected VuforiaLocalizer vuforia;
 
+    //motor for lights
+    protected DcMotor lights;
+
 
     @Override
     public void initRobot (RobotRunType robotRunType) {
@@ -119,6 +122,8 @@ public abstract class RelicHardware extends RelicRobot {
         HuggerRightBottom = hardwareMap.servo.get("huggerRB");
         HuggerLeftBottom = hardwareMap.servo.get("huggerLB");
 
+        lights = hardwareMap.dcMotor.get("lights");
+
         // calls for names from Robot Controller for color/distance sensors.
         RightColor = hardwareMap.get(ColorSensor.class, "ColorR");
         LeftColor = hardwareMap.get(ColorSensor.class, "ColorL");
@@ -147,6 +152,9 @@ public abstract class RelicHardware extends RelicRobot {
 
         imu = hardwareMap.get(ModernRoboticsI2cGyro.class, "gyro");
         gyro = (IntegratingGyroscope)imu;
+
+        lights.setPower(1);
+
 
         //calibrate gyro when initializing an Autonomous program
         if(robotRunType == RobotRunType.AUTONOMOUS){

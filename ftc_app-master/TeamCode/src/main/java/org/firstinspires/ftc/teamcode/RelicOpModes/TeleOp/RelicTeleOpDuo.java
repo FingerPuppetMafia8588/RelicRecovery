@@ -32,6 +32,8 @@ public class RelicTeleOpDuo extends RelicHardware {
 
         boolean grabbing = true;
 
+        double lighting = 1;
+
         //all code after this line will not occur until the start button is pressed
         waitForStart();
 
@@ -134,7 +136,7 @@ public class RelicTeleOpDuo extends RelicHardware {
             if (!flipped){
                 RelicFlipper.setPosition(flipOffset);
             } else {
-                RelicFlipper.setPosition(0.33);
+                RelicFlipper.setPosition(0.5);
             }
 
             if (gamepad2.dpad_down) {
@@ -150,8 +152,10 @@ public class RelicTeleOpDuo extends RelicHardware {
             if (grabbing){
                 RelicGrabber.setPosition(0);
             } else  {
-                RelicGrabber.setPosition(0.6);
+                RelicGrabber.setPosition(0.34);
             }
+
+            
 
             ///////////////////////////////////////////////////////////////////
             ////////////////////Telemetry//////////////////////////////////////

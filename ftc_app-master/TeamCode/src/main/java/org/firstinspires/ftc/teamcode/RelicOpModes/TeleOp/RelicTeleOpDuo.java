@@ -34,6 +34,8 @@ public class RelicTeleOpDuo extends RelicHardware {
 
         double lighting = 1;
 
+        boolean breathing = true;
+
         //all code after this line will not occur until the start button is pressed
         waitForStart();
 
@@ -155,7 +157,19 @@ public class RelicTeleOpDuo extends RelicHardware {
                 RelicGrabber.setPosition(0.34);
             }
 
-            
+            if (lighting > 0.9) {
+                breathing = true;
+            } else if (lighting < 0.05) {
+                breathing = false;
+            }
+
+            if (breathing){
+                lighting -= 0.015;
+            } else {
+                lighting += 0.015;
+            }
+
+            lights.setPower(lighting);
 
             ///////////////////////////////////////////////////////////////////
             ////////////////////Telemetry//////////////////////////////////////

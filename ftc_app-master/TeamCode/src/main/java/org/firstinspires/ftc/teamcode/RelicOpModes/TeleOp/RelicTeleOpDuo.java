@@ -114,18 +114,19 @@ public class RelicTeleOpDuo extends RelicHardware {
             //check for controller two input
             controller2();
 
+            //use dpad to vary the position of the relic arm
             if (gamepad2.dpad_right) {
                 if (flipOffset >= 0) {
                     flipOffset -= 0.02;
                 }
             }
-
             if (gamepad2.dpad_left) {
                 if (flipOffset <= 1) {
                     flipOffset += 0.02;
                 }
             }
 
+            //create a togglable button for elevating the relic up.
             if(gamepad2.dpad_up) {
                 if (!flipped) {
                     flipped = true;
@@ -141,6 +142,7 @@ public class RelicTeleOpDuo extends RelicHardware {
                 RelicFlipper.setPosition(0.5);
             }
 
+            //create a togglable button to grab the relic
             if (gamepad2.dpad_down) {
                 if (grabbing) {
                     grabbing = false;
@@ -157,6 +159,7 @@ public class RelicTeleOpDuo extends RelicHardware {
                 RelicGrabber.setPosition(0.34);
             }
 
+            //make the led ligh strip have a breathing effect
             if (lighting > 0.9) {
                 breathing = true;
             } else if (lighting < 0.05) {
@@ -230,13 +233,8 @@ public class RelicTeleOpDuo extends RelicHardware {
             HuggerRightBottom.setPosition(0.85);
         }
 
-
-            RelicArmExt.setPower(-gamepad2.right_stick_y);
-
-
-
-
-
+        //make the right joystick control the extension of the relic arm.
+            RelicArmExt.setPower(gamepad2.right_stick_y);
     }
 
 }

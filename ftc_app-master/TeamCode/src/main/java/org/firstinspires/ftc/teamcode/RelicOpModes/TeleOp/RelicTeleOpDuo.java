@@ -26,11 +26,9 @@ public class RelicTeleOpDuo extends RelicHardware {
         //sets the drive speed shifter variable to off by default
         boolean speedShift = false;
 
-        boolean flipped = false;
-
         double flipOffset = 1;
 
-        boolean grabbing = true;
+        double grabOffset = 0;
 
         double lighting = 1;
 
@@ -114,7 +112,7 @@ public class RelicTeleOpDuo extends RelicHardware {
             //check for controller two input
             controller2();
 
-            //use dpad to vary the position of the relic arm
+            //use dpad up right and left to vary the position of the relic arm elevator
             if (gamepad2.dpad_right) {
                 if (flipOffset >= 0) {
                     flipOffset -= 0.02;
@@ -126,40 +124,25 @@ public class RelicTeleOpDuo extends RelicHardware {
                 }
             }
 
-            //create a togglable button for elevating the relic up.
-            if(gamepad2.dpad_up) {
-                if (!flipped) {
-                    flipped = true;
-                    sleep(50);
-                } else {
-                    flipped = false;
-                    sleep(50);
-                }
-            }
-            if (!flipped){
-                RelicFlipper.setPosition(flipOffset);
-            } else {
-                RelicFlipper.setPosition(0.5);
-            }
+            RelicFlipper.setPosition(flipOffset);
 
-            //create a togglable button to grab the relic
+            //use dpad up and down to vary the position of the the relic arm grabber
             if (gamepad2.dpad_down) {
-                if (grabbing) {
-                    grabbing = false;
-                    sleep(50);
-                } else {
-                    grabbing = true;
-                    sleep(50);
+                if (grabOffset >= 0) {
+                    grabOffset -= 0.02;
+                }
+            }
+            if (gamepad2.dpad_up) {
+                if (grabOffset <= 1) {
+                    grabOffset += 0.02;
                 }
             }
 
-            if (grabbing){
-                RelicGrabber.setPosition(0);
-            } else  {
-                RelicGrabber.setPosition(0.34);
-            }
+            RelicGrabber.setPosition(grabOffset);
 
-            //make the led ligh strip have a breathing effect
+
+
+            //make the led light strip have a breathing effect
             if (lighting > 0.9) {
                 breathing = true;
             } else if (lighting < 0.05) {

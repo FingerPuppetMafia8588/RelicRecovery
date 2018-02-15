@@ -53,7 +53,7 @@ public class jewelAuto extends RelicAutonomousBase {
         telemetry.addLine("Press X for blue team or press B for red team");
         telemetry.update();
 
-        while(!teampicked){
+        while(!teampicked && !isStopRequested()){
             if (gamepad1.x){
                 telemetry.addData("Team", "Blue");
 
@@ -72,7 +72,7 @@ public class jewelAuto extends RelicAutonomousBase {
         telemetry.addLine("press A for front balance stone or Y for back stone");
         telemetry.update();
 
-        while(!balancepicked){
+        while(!balancepicked && !isStopRequested()){
             if (gamepad1.a) {
                 telemetry.addData("Balance", "Front");
                 telemetry.update();
@@ -90,7 +90,7 @@ public class jewelAuto extends RelicAutonomousBase {
         }
 
         //if a long time passes between init and match start, press a to reset the gyro value to 0 to negate imu drift.
-        while (!opModeIsActive()) {
+        while (!opModeIsActive() && !isStopRequested()) {
             if(gamepad1.a) {
                 imu.resetZAxisIntegrator();
             }

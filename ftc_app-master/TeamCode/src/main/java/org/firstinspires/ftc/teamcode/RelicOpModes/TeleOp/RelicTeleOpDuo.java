@@ -127,12 +127,12 @@ public class RelicTeleOpDuo extends RelicHardware {
             RelicFlipper.setPosition(flipOffset);
 
             //use dpad up and down to vary the position of the the relic arm grabber
-            if (gamepad2.dpad_down) {
+            if (gamepad2.dpad_up) {
                 if (grabOffset >= 0) {
                     grabOffset -= 0.02;
                 }
             }
-            if (gamepad2.dpad_up) {
+            if (gamepad2.dpad_down) {
                 if (grabOffset <= 1) {
                     grabOffset += 0.02;
                 }

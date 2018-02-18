@@ -143,7 +143,7 @@ public abstract class RelicHardware extends RelicRobot {
         JewelRight.setPosition(0.6);
         JewelLeft.setPosition(0.43);
 
-        RelicGrabber.setPosition(0);
+        RelicGrabber.setPosition(1);
         RelicFlipper.setPosition(1);
 
         // sets up parameters for integrated imu

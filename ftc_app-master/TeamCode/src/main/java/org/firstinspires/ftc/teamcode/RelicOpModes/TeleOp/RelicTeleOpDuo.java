@@ -28,7 +28,7 @@ public class RelicTeleOpDuo extends RelicHardware {
 
         double flipOffset = 1;
 
-        double grabOffset = 0;
+        double grabOffset = 1;
 
         double lighting = 1;
 
@@ -113,12 +113,12 @@ public class RelicTeleOpDuo extends RelicHardware {
             controller2();
 
             //use dpad up right and left to vary the position of the relic arm elevator
-            if (gamepad2.dpad_right) {
+            if (gamepad2.right_bumper) {
                 if (flipOffset >= 0) {
                     flipOffset -= 0.02;
                 }
             }
-            if (gamepad2.dpad_left) {
+            if (gamepad2.left_bumper) {
                 if (flipOffset <= 1) {
                     flipOffset += 0.02;
                 }
@@ -221,3 +221,4 @@ public class RelicTeleOpDuo extends RelicHardware {
     }
 
 }
+

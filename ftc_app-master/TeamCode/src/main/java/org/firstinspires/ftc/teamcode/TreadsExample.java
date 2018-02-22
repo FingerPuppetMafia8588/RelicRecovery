@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 /**
  * Created by FTC on 10/2/2017.
@@ -24,6 +25,8 @@ public class TreadsExample extends OpMode {
         //grabs motor names from the configuration file
         Left = hardwareMap.dcMotor.get("l");
         Right = hardwareMap.dcMotor.get("r");
+
+        Right.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     //this code runs continually after start is pressed

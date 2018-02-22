@@ -36,10 +36,10 @@ public class ExampleMecanum extends LinearOpMode {
     public void runOpMode() {
 
         //call for motors
-        RightF = hardwareMap.dcMotor.get("rf");
-        LeftF = hardwareMap.dcMotor.get("lf");
-        RightB = hardwareMap.dcMotor.get("rb");
-        LeftB = hardwareMap.dcMotor.get("lb");
+        RightF = hardwareMap.dcMotor.get("front_right");
+        LeftF = hardwareMap.dcMotor.get("front_left");
+        RightB = hardwareMap.dcMotor.get("rear_right");
+        LeftB = hardwareMap.dcMotor.get("rear_left");
 
         //reverse the right motors
         RightF.setDirection(DcMotor.Direction.REVERSE);
@@ -54,6 +54,9 @@ public class ExampleMecanum extends LinearOpMode {
             x1 = gamepad1.left_stick_x;
             y1 = -gamepad1.left_stick_y;
             x2 = gamepad1.right_stick_x;
+
+            double max;
+
 
             //Reset motor variables at beginning of the loop
             rightFront = 0;
@@ -79,27 +82,35 @@ public class ExampleMecanum extends LinearOpMode {
             rightBack -= x2;
             leftBack += x2;
 
-            // Scale the movement variables so they no not exceed the range of -1 to 1
-            double max = Math.max(Math.abs(leftFront), Math.max(Math.abs(leftBack),
-                    Math.max(Math.abs(rightFront), Math.abs(rightBack))));
+//limit the motor values to the acceptable range by motor
+            max = Math.abs(leftFront);
+            if (Math.abs(rightFront)>max){
+                max = Math.abs(rightFront);
+            }
+            if (Math.abs(leftBack)>max){
+                max = Math.abs(leftBack);
+            }
+            if (Math.abs(rightBack)>max){
+                max = Math.abs(rightBack);
+            }
             if (max > 1) {
-                leftFront = (float) Range.scale(leftFront, -max, max, -1, 1);
-                leftBack = (float)Range.scale(leftBack, -max, max, -1, 1);
-                rightFront = (float)Range.scale(rightFront, -max, max, -1, 1);
-                rightBack = (float)Range.scale(rightBack, -max, max, -1, 1);
+                leftFront/=max;
+                rightFront/=max;
+                leftBack/=max;
+                rightBack/=max;
+            }
 
-                RightF.setPower(rightFront);
-                LeftF.setPower(leftFront);
-                RightB.setPower(rightBack);
-                LeftB.setPower(leftBack);
-
+            RightF.setPower(rightFront);
+            RightB.setPower(rightBack);
+            LeftF.setPower(leftFront);
+            LeftB.setPower(leftBack);
 
             }
 
             ComposeTelemetry();
         }
 
-    }
+
 
     public void ComposeTelemetry (){
         //print joystick values

@@ -98,6 +98,12 @@ public class RelicTeleOpDuo extends RelicHardware {
                 RightBackPowerVar/=max;
             }
 
+            if(gamepad1.right_bumper){
+                speedShift = true;
+            } else {
+                speedShift = false;
+            }
+
             //reduces speed to half if speed shift is on
             if (!speedShift) {
                 SetDrivePower(RightFrontPowerVar,RightBackPowerVar,LeftFrontPowerVar,LeftBackPowerVar);

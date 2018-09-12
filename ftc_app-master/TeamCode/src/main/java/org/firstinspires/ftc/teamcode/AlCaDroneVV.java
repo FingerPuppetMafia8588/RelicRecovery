@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  */
 
 @TeleOp (name = "AlCaDrone", group = "Example")
-@Disabled
+
 public class AlCaDroneVV  extends OpMode {
 
     //declares the drive motors
